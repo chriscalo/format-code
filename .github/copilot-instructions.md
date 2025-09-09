@@ -4,9 +4,9 @@
 
 ## Repository Overview
 
-This repository contains a **multi-tool orchestrator framework** for formatting code that handles languages embedded within other languages (HTML with CSS/JS, Markdown with code blocks, etc.). The project is currently in **design phase** with comprehensive specifications but no implementation yet.
+This repository will contain a **multi-tool orchestrator framework** for formatting code that handles languages embedded within other languages (HTML with CSS/JS, Markdown with code blocks, etc.). The project is currently in **design phase** with unfinished specifications and no implementation yet.
 
-**Current State**: Design-only repository with detailed architectural specifications in `specs/` directory. No build system, dependencies, or source code exists yet.
+**Current State**: Repository with unfinished architectural specifications in `specs/` directory. No build system, dependencies, or source code exists yet.
 
 ## Working Effectively
 
@@ -19,8 +19,6 @@ This repository contains a **multi-tool orchestrator framework** for formatting 
 - **Technology Stack**: Node.js with Unified ecosystem (rehype for HTML, remark for Markdown)
 
 ### Current Repository State - IMPORTANT
-- **NO BUILD COMMANDS EXIST YET** - This is a design-phase repository
-- **NO PACKAGE.JSON EXISTS** - Project structure needs to be bootstrapped
 - **NO SOURCE CODE EXISTS** - Implementation must follow the architectural design in `specs/03-design.md`
 
 ### Validation Scenarios (Once Implemented)
@@ -29,20 +27,20 @@ After making changes to the orchestrator, ALWAYS test these scenarios:
 2. **Markdown with code blocks**: Test fenced code blocks (```js, ```css, ```html) and verify inner content formats identically to standalone files
 3. **Embedding parity**: Verify that code formatted inside embeddings is byte-for-byte identical to standalone formatting
 4. **Round-trip stability**: Run formatter twice on same file, verify no changes on second run
-5. **Indentation preservation**: Test embedded code at various indentation levels, verify proper reindentation
+5. **Indentation preservation**: Test embedded code at various indentation levels, verify proper reindentation other than inherited indentation from surrounding context
 
 ### Key Design Principles (Always Follow)
 - **Inner tool ignorance**: Embedded formatters run as if on standalone files
 - **Embedding parity**: Embedded code must format identically to standalone files
 - **Outer context enforcement**: Orchestrator handles indentation and line width constraints
 - **Boundary discipline**: Host formatters only normalize boundaries, never rewrite inner content
-- **Plugin-driven extensibility**: Use rich plugin ecosystems, avoid writing custom formatters
+- **Plugin-driven extensibility**: Use rich plugin ecosystems as much as possible, avoid writing custom formatters
 
 ### Important File Locations
 - `/specs/` - Complete architectural specifications (READ THESE FIRST)
-- `/specs/03-design.md` - Detailed implementation architecture
-- `/specs/02-requirements.md` - Functional requirements and constraints
 - `/specs/01-overview.md` - High-level project goals and scope
+- `/specs/02-requirements.md` - Functional requirements and constraints
+- `/specs/03-design.md` - Detailed implementation architecture
 
 ### Common Mistakes to Avoid
 - **DO NOT** try to build or test - no implementation exists yet
@@ -53,7 +51,7 @@ After making changes to the orchestrator, ALWAYS test these scenarios:
 
 ### Platform Compatibility
 - Primary target: macOS (specified in requirements)
-- Must also work on Linux and Windows
+- Must also work on Linux
 - Node.js required for runtime
 
 ## Repository Navigation
@@ -65,7 +63,7 @@ After making changes to the orchestrator, ALWAYS test these scenarios:
 4. Note that NO CODE EXISTS YET - this is design phase
 
 ### Project Status
-- **Design**: ✅ Complete - comprehensive specifications exist
+- **Design**: ❌ In progress - specifications are being developed
 - **Implementation**: ❌ Not started - needs to be built according to 03-design.md
 - **Testing**: ❌ No tests exist yet
 - **CI/CD**: ❌ No workflows exist yet
