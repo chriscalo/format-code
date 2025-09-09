@@ -18,7 +18,7 @@ This repository will contain a **multi-tool orchestrator framework** for formatt
 - **Key Principle**: Multi-tool approach using best-in-class formatters orchestrated through a unified framework
 - **Technology Stack**: Node.js with Unified ecosystem (rehype for HTML, remark for Markdown)
 
-### Current Repository State - IMPORTANT
+### Current Repository State
 - **NO SOURCE CODE EXISTS** - Implementation must follow the architectural design in `specs/03-design.md`
 
 ### Validation Scenarios (Once Implemented)
