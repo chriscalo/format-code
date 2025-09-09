@@ -1,9 +1,4 @@
-# Code Formatting Orchestrator
-
-> Persona: **Software Architect** (Phase 3)  
-> Goal: Integrate better ideas from the provided draft while staying 100% aligned with our approved **01-overview.md** and **02-requirements.md**.
-
----
+# Code Formatting Orchestrator — Technical Design
 
 ## Decision Summary
 
