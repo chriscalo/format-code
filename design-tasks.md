@@ -79,41 +79,42 @@
 - More focused on technical implementation
 - Single unified reference document
 
-## Resolution Tasks (To Present One by One)
+## Resolution Tasks Checklist
 
-### 1. **Document Structure** ✅ [NEEDS RESOLUTION]
-**Question**: Keep specs/ 3-file organization vs single goals.md approach?
-- **specs/**: Better for navigation, different audiences (PMs vs developers), more maintainable
-- **goals.md**: Better for developers who want everything in one place, less fragmentation
-- **Recommendation**: Keep specs/ 3-file structure for better organization
+### ✅ Completed Tasks
+- [x] **Analysis and Documentation** - Analyzed all files and identified key differences
 
-### 2. **Content Consolidation** ❌ [PENDING]
-**Question**: How to merge the ~95% identical technical content between specs/03-design.md and goals.md?
-- Both have nearly identical technical implementation details
-- goals.md has cleaner presentation without metadata
-- specs/03-design.md has persona/goal headers that add clutter
+### 🔄 Current Task  
+- [ ] **1. Document Structure Decision** - Keep specs/ 3-file organization vs single goals.md approach?
+  - **specs/**: Better for navigation, different audiences (PMs vs developers), more maintainable
+  - **goals.md**: Better for developers who want everything in one place, less fragmentation
+  - **Recommendation**: Keep specs/ 3-file structure for better organization
+  - **Status**: Awaiting user decision
 
-### 3. **Metadata Cleanup** ❌ [PENDING]  
-**Question**: Remove persona/phase references from specs/03-design.md?
-- specs/03-design.md has: "Persona: Software Architect (Phase 3)" header
-- goals.md has clean design without metadata
-- Metadata appears to reference some external process phases
+### ⏳ Pending Tasks
+- [ ] **2. Content Consolidation** - How to merge the ~95% identical technical content between specs/03-design.md and goals.md?
+  - Both have nearly identical technical implementation details
+  - goals.md has cleaner presentation without metadata
+  - specs/03-design.md has persona/goal headers that add clutter
 
-### 4. **Content Focus** ❌ [PENDING]
-**Question**: Use specs/ comprehensive approach vs goals.md focused approach?
-- specs/ is more comprehensive with foundational context
-- goals.md is more focused on technical implementation
-- Need to decide level of detail for target audience
+- [ ] **3. Metadata Cleanup** - Remove persona/phase references from specs/03-design.md?
+  - specs/03-design.md has: "Persona: Software Architect (Phase 3)" header
+  - goals.md has clean design without metadata
+  - Metadata appears to reference some external process phases
 
-### 5. **Title Consistency** ❌ [PENDING]
-**Question**: Standardize on "Code Formatting Orchestrator" vs variations?
-- Different documents use slightly different titles/headings
-- Need consistent branding across all documents
+- [ ] **4. Content Focus** - Use specs/ comprehensive approach vs goals.md focused approach?
+  - specs/ is more comprehensive with foundational context
+  - goals.md is more focused on technical implementation
+  - Need to decide level of detail for target audience
 
-## Current Status
-- **Completed**: Analysis and documentation of differences
-- **In Progress**: Presenting Issue #1 (Document Structure) for resolution
-- **Pending**: Issues #2-5 await resolution of Issue #1
+- [ ] **5. Title Consistency** - Standardize on "Code Formatting Orchestrator" vs variations?
+  - Different documents use slightly different titles/headings
+  - Need consistent branding across all documents
+
+## Progress Summary
+- **✅ Completed**: 1 task (Analysis and documentation of differences)
+- **🔄 In Progress**: 1 task (Document Structure Decision - awaiting user input)
+- **⏳ Pending**: 4 tasks (Content Consolidation, Metadata Cleanup, Content Focus, Title Consistency)
 
 ## Next Steps
 1. User decides on document structure approach
