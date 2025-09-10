@@ -80,14 +80,14 @@ The point is not just to validate that things work theoretically, but to create 
 
 # POC Implementation Phase
 01a-poc-html:
-  status: ready
+  status: done
   dependencies: [01-tool-research]
-  note: "HTML formatter POC (rehype/rehype-format)"
+  note: "HTML formatter POC complete - rehype implementation in workspace/01-tool-research/html/"
 
 01b-poc-javascript:
   status: ready
   dependencies: [01-tool-research]
-  note: "JavaScript formatter POC (ESLint + js-beautify)"
+  note: "JavaScript formatter POC in progress - workspace/01-tool-research/js/"
 
 01c-poc-css:
   status: ready
@@ -102,7 +102,7 @@ The point is not just to validate that things work theoretically, but to create 
 01e-poc-yaml:
   status: ready
   dependencies: [01-tool-research]
-  note: "YAML formatter POC (eemeli/yaml)"
+  note: "YAML formatter POC needs rework - current eemeli/yaml doesn't preserve formatting, need alternative solution. Merge workspace/01-tool-research/yaml/ and yaml-alternatives/ directories"
 
 01f-poc-json:
   status: ready
