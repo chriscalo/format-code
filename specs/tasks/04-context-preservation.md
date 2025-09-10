@@ -101,7 +101,14 @@ Create `workspace/04-context-preservation/` for:
 - [ ] Document memory usage for deeply nested content
 - [ ] Consider caching indentation detection results
 
-## Success Criteria
+## Minimum Success Criteria  
+
+**Task is complete when:**
+1. ✅ Context extraction algorithm implemented and tested
+2. ✅ At least 3 test cases pass (basic nesting, edge case, one complex case)
+3. ✅ Integration with orchestrator demonstrated
+
+## Full Success Criteria
 - Byte-for-byte identical results when formatting same content at same indent level
 - Effective width calculation always respects minimum of 40 characters
 - Blank line whitespace exactly matches surrounding context

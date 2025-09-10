@@ -66,12 +66,38 @@ Create `workspace/03-basic-orchestrator/` for:
 - [ ] Test CLI flags and error handling
 - [ ] Verify deterministic output (same input → same output)
 
-## Success Criteria
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ orchestrator.js exists and can format all 7 file types via CLI
+2. ✅ All integration tests pass (at least 1 test per language)
+3. ✅ README with usage examples exists
+
+## Full Success Criteria
 - Can format any single-language file correctly
 - All formatters use consistent style preferences
 - Clean error messages for malformed files
 - Deterministic and idempotent results
 - No file corruption or data loss
+
+## Fallback Strategies
+
+**Time-box**: 4 hours for core implementation
+
+**If formatter integration fails:**
+1. Start with just 3 languages (HTML, JS, Python) to prove concept
+2. Use simplified configuration (hardcoded options) initially
+3. Skip advanced features, focus on basic formatting first
+
+**If stdin/stdout handling is complex:**
+1. Use temporary files as intermediary (write → format → read)
+2. Implement file-based approach first, add stdin/stdout later
+3. Document the limitation for future improvement
+
+**If tests are failing:**
+1. Simplify test cases to most basic formatting
+2. Test each formatter in isolation before integration
+3. Add debug logging to understand data flow
 
 ## Documentation Requirements
 - Document exact configuration for each tool

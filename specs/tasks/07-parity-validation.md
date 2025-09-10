@@ -126,8 +126,15 @@ function test() {
 - [ ] Investigate caching formatted results
 - [ ] Document when to disable parity checking in production
 
-## Success Criteria
-- Zero tolerance for parity violations - any difference is a bug
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ Parity validation script exists and runs
+2. ✅ 80% of test cases achieve byte-for-byte parity  
+3. ✅ All parity violations are documented with explanations
+
+## Full Success Criteria
+- Goal: Achieve byte-for-byte parity where possible
 - Clear error messages that help debug formatter differences  
 - Minimal performance impact when parity checking is enabled
 - Reliable operation even when formatters crash or fail

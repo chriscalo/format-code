@@ -28,7 +28,7 @@ The point is not just to validate that things work theoretically, but to create 
 
 **Work loop**:
 1. Check task status in YAML below
-2. For `ready` tasks: `spawnAgent('general-purpose', 'Execute task [ID]. Your context: specs/tasks/[ID].md')`
+2. For `ready` tasks: Use Task tool with `subagent_type='general-purpose'` and `prompt='Execute task [ID]. Your context: specs/tasks/[ID].md'`
 3. When agents report completion: Update status and promote waiting tasks
 4. **Course corrections**: If agents ask questions or need guidance, provide minimal focused answers
 5. **Stay high-level**: Don't get pulled into task details - that's the agent's job
@@ -135,5 +135,5 @@ The point is not just to validate that things work theoretically, but to create 
 
 Each task file links to the context it needs:
 - **Style Guide**: [STYLE_GUIDE.md](../../STYLE_GUIDE.md)
-- **Project Context**: [specs/project-context.md](../project-context.md)  
-- **Technical Requirements**: [specs/technical-requirements.md](../technical-requirements.md)
+- **Project Context**: [project-context.md](../project-context.md)  
+- **Technical Requirements**: [technical-requirements.md](../technical-requirements.md)

@@ -99,9 +99,9 @@ Which tools actually do what we need before we bother installing them?
 **Test Status**: 2/5 tests passing - comment preservation tests fail
 **Alternative Options**: YAWN-YAML, enhanced-yaml exist but not evaluated
 
-**DECISION**: js-yaml has fundamental comment preservation limitation. **REQUIRES FOLLOW-UP RESEARCH**:
+**DECISION**: js-yaml has fundamental comment preservation limitation. **REQUIRES ALTERNATIVE SOLUTION**.
 
-**YAML Research Phase 2** (to be executed):
+**YAML Research Phase 2** (required for completion):
 1. **Research comment-preserving YAML formatters**:
    - YAWN-YAML: AST-based YAML formatter with comment preservation
    - enhanced-yaml: Comment-preserving YAML library  
@@ -114,7 +114,7 @@ Which tools actually do what we need before we bother installing them?
    - Validate style guide compliance (minimal quoting, 80-char width)
    - Create test suites comparing with expected.yaml
 
-3. **Document final recommendation** with working POC
+3. **Document final recommendation** with working POC that preserves comments
 
 ### JSON/JSONC: ESLint + @eslint/json (2024 official)
 - [x] ESLint + @eslint/json works via stdin/stdout? **YES** - native ESLint `--stdin` flag, `--stdin-filename` support
@@ -222,7 +222,7 @@ Which tools actually do what we need before we bother installing them?
 4. **Configuration management** for all tools
 
 ### Development Gaps Identified:
-- **YAML**: js-yaml cannot preserve comments - **REQUIRES FOLLOW-UP RESEARCH TASK**
+- **YAML**: js-yaml cannot preserve comments - **REQUIRES ALTERNATIVE SOLUTION**
 - Integration: Need orchestrator to manage multiple tools consistently  
 - Context: Need system to preserve context when formatting embedded blocks
 
@@ -243,12 +243,9 @@ Which tools actually do what we need before we bother installing them?
 
 ## EXECUTION PLAN
 
-### Phase 1: YAML Research Completion
-**Priority**: CRITICAL - YAML formatter has fundamental limitation
-**Action**: Execute YAML Research Phase 2 (defined above):
-1. Research YAWN-YAML, enhanced-yaml, yaml-diff-patch for comment preservation
-2. Implement working POC with comment-preserving formatter
-3. Validate against expected.yaml with comments intact
+### Phase 1: YAML Alternative Research
+**Priority**: CRITICAL - js-yaml cannot preserve comments
+**Action**: Research and implement comment-preserving YAML formatter from alternatives listed above
 
 ### Phase 2: Complete All Language POCs 
 **Priority**: HIGH - Need working proof for every language
@@ -267,4 +264,27 @@ Which tools actually do what we need before we bother installing them?
 - ✅ stdin/stdout operation confirmed
 - ✅ Real formatting examples working
 
-**BLOCKER**: Task cannot be marked complete until ALL POCs are working with tests.
+**SUCCESS CRITERIA**: Task is complete when:
+1. YAML POC exists that PRESERVES COMMENTS (js-yaml insufficient, needs alternative)
+2. POCs exist for all other languages (HTML, JS, CSS, Markdown, JSON, Python)
+3. All POCs have passing tests demonstrating formatting capabilities
+
+## Fallback Strategies
+
+**Time-box**: 2 hours per language POC
+
+**If stuck on YAML comment preservation (after 3 hours):**
+1. Try YAWN-YAML first (most promising for comment preservation)
+2. If YAWN-YAML fails, try yaml-comments or yaml-ast-parser
+3. If all Node.js options fail, create Python wrapper using ruamel.yaml
+4. Last resort: Document limitation and proceed with js-yaml + manual comment extraction
+
+**If a formatter won't work via stdin/stdout:**
+1. Try using the programmatic API with temporary files
+2. Create a wrapper script that handles file I/O
+3. Document the limitation and propose alternative tool
+
+**If tests keep failing:**
+1. Reduce test complexity to isolate the issue
+2. Check if it's a style guide interpretation issue
+3. Verify formatter version and configuration options

@@ -171,7 +171,14 @@ Back to markdown content.
 - [ ] Context preservation works through all three levels
 - [ ] Final result maintains all proper indentation
 
-## Success Criteria  
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ remark plugin for code block formatting works for 5+ languages
+2. ✅ Basic nesting test passes (markdown with HTML with JS)
+3. ✅ Plugin integrates with orchestrator
+
+## Full Success Criteria  
 - Code blocks format identically to standalone files of same language
 - Markdown structure preservation (lists, quotes, headers)
 - Proper handling of delegation chains (markdown → HTML → JavaScript/CSS)

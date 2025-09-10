@@ -113,12 +113,38 @@ Create `workspace/05-html-embedding/` for:
 - [ ] Preserve original HTML structure even if embedding fails
 - [ ] Log errors appropriately without breaking the process
 
-## Success Criteria
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ rehype plugin for <script> and <style> formatting works
+2. ✅ Basic test cases pass (inline scripts, inline styles, mixed content)
+3. ✅ Plugin integrates with orchestrator
+
+## Full Success Criteria
 - Embedded JavaScript/CSS formats identically to standalone files
 - Host HTML structure remains clean and consistent
 - No corruption or data loss during processing
 - Graceful handling of malformed embedded content
 - Deterministic output across multiple runs
+
+## Fallback Strategies
+
+**Time-box**: 3 hours for plugin development
+
+**If rehype plugin development is too complex:**
+1. Use regex-based extraction as temporary solution
+2. Focus on <script> tags first, add <style> later
+3. Use simple string replacement if AST manipulation fails
+
+**If integration with orchestrator fails:**
+1. Implement as standalone preprocessor
+2. Format HTML and embedded code in separate passes
+3. Document as known limitation for later improvement
+
+**If edge cases keep breaking:**
+1. Handle only well-formed HTML initially
+2. Skip CDATA sections and complex scenarios
+3. Focus on 80% use case (standard script/style tags)
 
 ## Documentation Requirements
 - Document the rehype plugin architecture and hooks used

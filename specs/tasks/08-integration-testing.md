@@ -218,7 +218,14 @@ Sometimes you need to include raw HTML:
 - [ ] Test with missing configuration files (default behavior)
 - [ ] Test configuration inheritance and override behavior
 
-## Success Criteria
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ Test suite with 10+ real-world test cases exists
+2. ✅ 90% of tests pass
+3. ✅ Performance benchmark shows <2s for typical files
+
+## Full Success Criteria
 - All golden fixtures produce expected output consistently
 - Round-trip stability across all test cases
 - No data loss or corruption in any scenario

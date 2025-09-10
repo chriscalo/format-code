@@ -67,7 +67,14 @@ Create `workspace/02-stdio-validation/` for:
 - [ ] Compare output consistency between tools
 - [ ] Document which tool provides better configuration options
 
-## Success Criteria
+## Minimum Success Criteria
+
+**Task is complete when:**
+1. ✅ All 7 formatters have working stdin/stdout test scripts in workspace/02-stdio-validation/
+2. ✅ Each test script successfully formats a sample file via stdin and outputs to stdout
+3. ✅ Results documented in this file showing pass/fail for each tool
+
+## Full Success Criteria
 - Each tool must accept stdin and produce stdout
 - No temporary file creation required
 - Clean error handling for malformed input
