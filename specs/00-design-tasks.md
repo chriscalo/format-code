@@ -1,29 +1,56 @@
-# Risk Investigation Plan
+# Design Validation Tasks
 
 ## Overview
-This document outlines critical risks identified in the Code Formatting Orchestrator design and provides a structured plan to investigate and validate key assumptions before implementation.
+This document identifies the parts of the Code Formatting Orchestrator design that are most likely to cause problems and outlines focused explorations and proof of concepts to verify they'll work as intended.
 
 ---
 
-## **Critical Technical Implementation Risks** 🔴
+## Progressive Proof of Concepts
 
-### 1. **Embedding Parity Constraint**
-- **Risk**: The requirement that embedded code formats "byte-for-byte identical" to standalone is extremely strict
-- **Investigation needed**: Test real-world scenarios where context affects parsing (e.g., HTML inside markdown affecting CSS/JS parsing, JSX with different parser contexts)
-- **Potential failure**: Some tools may behave differently with vs without surrounding context
-- **Priority**: CRITICAL - fundamental architecture assumption
+Start with the most basic pieces and build up confidence that the design approach will work.
 
-### 2. **Width Calculation Complexity** 
-- **Risk**: `effectiveWidth = maxWidth - indentOffset` assumes tools support width flags consistently
-- **Investigation needed**: Verify which tools actually support width constraints and how reliably
-- **Potential failure**: ESLint explicitly doesn't handle wrapping - the design acknowledges this but chains with JS-Beautify
-- **Priority**: HIGH - affects core functionality
+### 1. **Basic Tool Execution**
+Can we actually run each tool?
+- Install ESLint, Stylelint, yamlfmt, js-beautify on this machine
+- Get each tool to format a simple example via stdin/stdout
+- Verify they exit cleanly and produce expected output
 
-### 3. **AST Round-trip Reliability**
-- **Risk**: Parse → format → stringify cycles may not preserve all original content exactly
-- **Investigation needed**: Test rehype/remark round-trips with edge cases (comments, whitespace, malformed HTML)
-- **Potential failure**: Loss of content or unexpected transformations
-- **Priority**: CRITICAL - data integrity concern
+### 2. **Formatting Rules via Plugins**
+Can we get the desired formatting behavior?
+- Configure ESLint with rules for semicolons, quotes, indentation
+- Configure Stylelint with CSS formatting rules
+- Configure yamlfmt for YAML formatting preferences
+- Test each tool produces the formatting style we want
+
+### 3. **Custom Plugins for Missing Rules**
+Can we write plugins for rules that don't exist?
+- Identify formatting behaviors not available in existing plugins
+- Write minimal custom ESLint/Stylelint rules to fill gaps
+- Test custom plugins work as expected
+
+### 4. **HTML Embedded Languages (rehype)**
+Can we format JS and CSS inside HTML?
+- Parse HTML with rehype to find `<script>` and `<style>` blocks
+- Extract content, format with ESLint/Stylelint, reinsert
+- Verify embedded formatting matches standalone formatting
+
+### 5. **Advanced HTML Features**
+Can we handle line lengths and contextual indentation in HTML?
+- Test effective width calculation (maxWidth - indentOffset)
+- Test uniform indentation reapplication after formatting
+- Handle deeply nested HTML with embedded code
+
+### 6. **Markdown Embedded Languages (remark)**
+Can we format code blocks in Markdown?
+- Parse Markdown with remark to find fenced code blocks
+- Format JS, CSS, YAML, JSON, HTML code blocks
+- Preserve fence syntax and info strings
+
+### 7. **Advanced Markdown Features** 
+Can we handle line lengths and contextual indentation in Markdown?
+- Test formatting code blocks nested in lists/quotes
+- Handle indentation context preservation
+- Test complex embedding scenarios
 
 ---
 
