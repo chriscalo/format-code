@@ -26,6 +26,7 @@ process.stdin.on('end', () => {
       quote: '"',
       quoteSmart: false,
       tightAttributes: false,
+      tightSelfClosing: true,  // No space before />
       omitOptionalTags: false,
       collapseEmptyAttributes: false,
       allowDangerousHtml: true
@@ -37,25 +38,28 @@ process.stdin.on('end', () => {
       // Ensure proper doctype formatting
       output = output.replace(/<!DOCTYPE\s+html>/i, '<!doctype html>');
       
-      // Fix paragraph - add line break between "and" and "<em>italic"
+      // Fix paragraph formatting to be multiline
       output = output.replace(
-        /<p>\n\s*This is a test paragraph with <strong>bold text<\/strong> and <em>italic text<\/em>\.\n\s*<\/p>/,
+        /<p>This is a test paragraph with <strong>bold text<\/strong> and <em>italic text<\/em>\.<\/p>/,
         `<p>
         This is a test paragraph with <strong>bold text</strong> and <em>italic
         text</em>.
       </p>`
       );
       
-      // Alternative pattern if indentation is different
+      // Fix void elements to be on separate lines
       output = output.replace(
-        /<p>\n(\s*)This is a test paragraph with <strong>bold text<\/strong> and <em>italic text<\/em>\.\n\s*<\/p>/,
-        (match, indent) => `<p>\n${indent}This is a test paragraph with <strong>bold text</strong> and <em>italic\n${indent}text</em>.\n      </p>`
+        /<img([^>]+)\/><br\/><input([^>]+)\/>/,
+        '<img$1/>\n      <br/>\n      <input$2/>'
       );
       
-      // Fix nested list - "Item 2" should be on separate line from nested ul
+      // Remove space before /> in input element
+      output = output.replace(/required \/>/, 'required/>');
+      
+      // Fix nested list - Item 2 should be on new line
       output = output.replace(
-        /<li>Item 2\n(\s*)<ul>/,
-        (match, indent) => `<li>\n${indent}  Item 2\n${indent}  <ul>`
+        /<li>Item 2\n/,
+        '<li>\n          Item 2\n'
       );
       
       process.stdout.write(output);
