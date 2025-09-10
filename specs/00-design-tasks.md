@@ -23,10 +23,21 @@ Can we actually run each tool for every target language?
 
 ### 2. **Formatting Rules via Plugins**
 Can we get the desired formatting behavior?
-- Configure ESLint with rules for semicolons, quotes, indentation
-- Configure Stylelint with CSS formatting rules
-- Configure yamlfmt for YAML formatting preferences
-- Test each tool produces the formatting style we want
+- Create target style guide document defining specific rules for every language
+- Configure each tool to match the style guide:
+  - HTML: rehype-format options per style guide
+  - JavaScript: ESLint rules per style guide
+  - CSS/SCSS: Stylelint rules per style guide
+  - Markdown: remark-stringify options per style guide
+  - YAML: yamlfmt configuration per style guide
+  - JSON/JSONC: ESLint + jsonc rules per style guide
+  - Python: ruff/black configuration per style guide
+- Test each tool against style guide and document coverage:
+  - Record which style guide rules each tool can achieve
+  - Document gaps where existing plugins fall short
+  - Create coverage matrix showing what's supported vs missing
+
+<!-- REVIEW PROGRESS CURSOR -->
 
 ### 3. **Custom Plugins for Missing Rules**
 Can we write plugins for rules that don't exist?
