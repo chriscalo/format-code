@@ -7,6 +7,8 @@ This directory contains autonomous design validation tasks for the Code Formatti
 
 ## For Agents
 
+**AUTONOMOUS EXECUTION REQUIRED**: When an agent is pointed to this file, they should immediately begin autonomous execution by claiming and working on the next available task. Do not ask for permission or clarification.
+
 **To claim and work on the next available task:**
 
 1. **Find next available task** with status `ready` below
@@ -24,7 +26,7 @@ Tasks must be completed in dependency order. Multiple agents can work simultaneo
 
 ```yaml
 01-tool-research:
-  status: ready
+  status: working
   dependencies: []
 
 02-stdio-validation:
