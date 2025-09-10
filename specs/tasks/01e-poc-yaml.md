@@ -1,7 +1,15 @@
 # POC: YAML Formatter (eemeli/yaml)
 
 ## Task Context
-This task is part of the formatter POC validation suite. Your goal is to build and test a working YAML formatter that preserves comments.
+This task is part of the formatter POC validation suite. Your goal is to validate or build a working YAML formatter that preserves comments.
+
+## IMPORTANT: Check Existing Work First
+1. **First check** if `workspace/01e-poc-yaml/`, `workspace/01-tool-research/yaml/`, or `workspace/01-tool-research/yaml-alternatives/` exists
+2. **If tests exist**: Run them and analyze results
+   - If all tests pass (or meet documented 67% threshold) → Mark task as done, document success in this file
+   - If tests fail below expectations → Debug and fix them, document the fixes
+3. **If no tests exist**: Create the POC from scratch following requirements below
+4. **Always document** your findings and outcomes at the bottom of this file
 
 ## Tool Selection
 **YAML**: eemeli/yaml (winner after testing 3 libraries)
@@ -81,3 +89,9 @@ Document:
 ## References
 - [Style Guide](../../STYLE_GUIDE.md)
 - [Technical Requirements](../technical-requirements.md)
+
+## Task Execution Log
+<!-- Document your findings below this line -->
+### Status: [Update with PENDING/WORKING/DONE]
+### Findings:
+<!-- Add your analysis, test results, and any fixes made here -->

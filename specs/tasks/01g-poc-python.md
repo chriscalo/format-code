@@ -1,7 +1,15 @@
 # POC: Python Formatter (ruff)
 
 ## Task Context
-This task is part of the formatter POC validation suite. Your goal is to build and test a working Python formatter.
+This task is part of the formatter POC validation suite. Your goal is to validate or build a working Python formatter.
+
+## IMPORTANT: Check Existing Work First
+1. **First check** if `workspace/01g-poc-python/` or `workspace/01-tool-research/py/` exists
+2. **If tests exist**: Run them and analyze results
+   - If all tests pass → Mark task as done, document success in this file
+   - If tests fail → Debug and fix them, document the fixes
+3. **If no tests exist**: Create the POC from scratch following requirements below
+4. **Always document** your findings and outcomes at the bottom of this file
 
 ## Tool Selection
 **Python**: ruff (recommended)
@@ -80,3 +88,9 @@ quote-style = "double"
 ## References
 - [Style Guide](../../STYLE_GUIDE.md)
 - [Technical Requirements](../technical-requirements.md)
+
+## Task Execution Log
+<!-- Document your findings below this line -->
+### Status: [Update with PENDING/WORKING/DONE]
+### Findings:
+<!-- Add your analysis, test results, and any fixes made here -->
