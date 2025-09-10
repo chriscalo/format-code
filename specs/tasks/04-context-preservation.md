@@ -2,6 +2,12 @@
 
 Implement indentation detection, normalization, and reapplication for embedded content.
 
+## Workspace
+Create `workspace/04-context-preservation/` for:
+- `utils/context-preservation.js` implementation
+- Test cases and sample files with various indentation scenarios
+- Performance benchmarking scripts
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces

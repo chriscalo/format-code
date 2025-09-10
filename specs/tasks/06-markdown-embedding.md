@@ -2,6 +2,12 @@
 
 Implement remark plugin to format code blocks and raw HTML within Markdown.
 
+## Workspace
+Create `workspace/06-markdown-embedding/` for:
+- `plugins/remark-format-code-blocks.js` implementation
+- Markdown test files with various code block scenarios
+- Triple-embedding test cases (markdown → HTML → JS/CSS)
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces  

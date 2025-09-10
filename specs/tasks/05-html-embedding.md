@@ -2,6 +2,12 @@
 
 Implement rehype plugin to format `<script>` and `<style>` blocks within HTML.
 
+## Workspace
+Create `workspace/05-html-embedding/` for:
+- `plugins/rehype-format-embedded.js` implementation
+- HTML test files with various script/style embedding scenarios
+- Before/after comparison files for validation
+
 ## Context
 - Line length: 80 characters  
 - Indentation: 2 spaces

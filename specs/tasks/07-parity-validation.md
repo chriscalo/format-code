@@ -2,6 +2,12 @@
 
 Implement validation system to ensure embedded content formats identically to standalone files.
 
+## Workspace
+Create `workspace/07-parity-validation/` for:
+- `utils/embedding-parity.js` implementation
+- Parity test suites and comparison files
+- Error reporting and diff visualization tools
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces

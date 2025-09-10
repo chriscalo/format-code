@@ -9,10 +9,12 @@ This directory contains autonomous design validation tasks for the Code Formatti
 
 **To claim and work on the next available task:**
 
-1. **Find next available task** in the status section below
-2. **Claim task**: Update your task status to working  
-3. **Do the work**: Read the task file and complete all requirements
-4. **Mark complete**: Update status to done
+1. **Find next available task** with status `ready` below
+2. **Atomic claim**: Change status from `ready` to `working` in single edit
+3. **Create workspace**: Make directory `workspace/[task-id]/` for any files you create
+4. **Do the work**: Read the task file and complete all requirements  
+5. **Validate completion**: Verify all success criteria met before marking done
+6. **Mark complete**: Update status to `done` only after validation
 
 Tasks must be completed in dependency order. Multiple agents can work simultaneously on tasks that don't depend on each other.
 
@@ -58,23 +60,39 @@ Tasks must be completed in dependency order. Multiple agents can work simultaneo
 
 ## Status Schema
 
-- `ready` - Available to work on (all dependencies completed)
+- `ready` - Available to work on (all dependencies `done`)
 - `working` - Currently being worked on by an agent
-- `done` - Task completed successfully
-- `waiting` - Cannot start (dependencies not completed)
+- `done` - Task completed successfully, all success criteria verified
+- `waiting` - Cannot start (dependencies not `done`)
+- `failed` - Task attempted but did not meet success criteria
 
 ## How to Update Status
 
-When you start a task:
+**Atomic claiming** - Change status in single edit to prevent conflicts:
 ```yaml
 01-tool-research:
-  status: working
+  status: working  # Changed from 'ready' to 'working' atomically
 ```
 
-When you complete a task:
+**Automatic dependency resolution** - When you mark a task `done`, check if any `waiting` tasks can now become `ready`:
 ```yaml
 01-tool-research:
   status: done
+  
+02-stdio-validation:
+  status: ready  # Auto-promoted from 'waiting' since 01 is done
+```
+
+**Quality control** - Only mark `done` after verifying all success criteria:
+```yaml
+01-tool-research:
+  status: done  # All research complete, findings documented, tool selection report created
+```
+
+**Rollback mechanism** - If work is incomplete or fails validation:
+```yaml
+01-tool-research:
+  status: failed  # Will be reset to 'ready' for retry by another agent
 ```
 
 

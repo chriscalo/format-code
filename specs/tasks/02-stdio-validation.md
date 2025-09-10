@@ -2,6 +2,12 @@
 
 Test whether each formatter can meet the stdio goals identified in the research phase.
 
+## Workspace
+Create `workspace/02-stdio-validation/` for:
+- Test scripts and input files
+- Configuration files for each tool
+- Output samples and error logs
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces

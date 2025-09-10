@@ -2,6 +2,12 @@
 
 Test the complete orchestrator with complex real-world scenarios and edge cases.
 
+## Workspace
+Create `workspace/08-integration-testing/` for:
+- `tests/` directory with Node.js test runner setup
+- `fixtures/` with golden input/expected output pairs
+- Performance benchmarking and cross-platform test scripts
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces

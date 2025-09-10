@@ -2,6 +2,13 @@
 
 Build the core orchestrator that can format individual files without embedding complexity.
 
+## Workspace
+Create `workspace/03-basic-orchestrator/` for:
+- `scripts/format/` directory structure
+- All formatter adapters and utilities
+- Configuration files for each tool
+- Test files and npm scripts
+
 ## Context
 - Line length: 80 characters
 - Indentation: 2 spaces
