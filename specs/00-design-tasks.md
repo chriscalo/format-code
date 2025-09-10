@@ -10,8 +10,14 @@ This document identifies the parts of the Code Formatting Orchestrator design th
 Start with the most basic pieces and build up confidence that the design approach will work.
 
 ### 1. **Basic Tool Execution**
-Can we actually run each tool?
-- Install ESLint, Stylelint, yamlfmt, js-beautify on this machine
+Can we actually run each tool for every target language?
+- **JavaScript**: Install and test ESLint, js-beautify
+- **Python**: Install and test ruff, black
+- **CSS/SCSS**: Install and test Stylelint
+- **YAML**: Install and test yamlfmt
+- **JSON/JSONC**: Install and test ESLint with jsonc-eslint-parser
+- **HTML**: Install and test rehype, rehype-format
+- **Markdown**: Install and test remark, remark-stringify
 - Get each tool to format a simple example via stdin/stdout
 - Verify they exit cleanly and produce expected output
 
