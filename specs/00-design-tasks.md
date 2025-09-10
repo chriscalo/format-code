@@ -188,6 +188,7 @@ Can we get the desired formatting behavior?
 - Indentation: 2 spaces (never tabs)
 - Maximum line length: 80 characters  
 - Line endings: Unix (\n)
+- Blank line whitespace: must match surrounding context indentation
 
 **JavaScript:**
 - Semicolons: always required
@@ -518,4 +519,3 @@ Create these complex Markdown scenarios:
   - [ ] Document any edge cases where formatting breaks down
 - [ ] **Create complex markdown test results** proving orchestrator concept works
 - [ ] **Final validation report:** Complete multi-language coordination success
-

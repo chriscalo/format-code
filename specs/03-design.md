@@ -169,7 +169,7 @@ export class ProcessCoordinator {
 - **Compute** `effectiveWidth = configuredMaxWidth − indentOffset`.  
   - Pass to inner tool **if** it supports width flags (**JS‑Beautify**, **Pretty Diff**, **yamlfmt**); else rely on inner rules and ensure reintegration does not exceed host width.  
 - **Reapply** uniform indent to each returned line.
-- **Preserve** blank line policy as configured (host controls surrounding blank lines).
+- **Preserve** blank line policy as configured (host controls surrounding blank lines, blank line whitespace must match surrounding context indentation).
 
 ```js
 // scripts/format/utils/context-preservation.js

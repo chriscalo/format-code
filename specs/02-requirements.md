@@ -47,7 +47,7 @@
 ## Non-Functional Requirements
 
 ### Configurability
-- Each formatter must be **highly configurable** (indentation, line wrapping, quotes, semicolons, trailing commas, blank line handling, attribute wrapping).  
+- Each formatter must be **highly configurable** (indentation, line wrapping, quotes, semicolons, trailing commas, blank line handling with context-matching whitespace, attribute wrapping).  
 - Rules must be shared across embedded and standalone contexts.  
 - It is acceptable to use **separate configs per tool**; a single unified config is not required.  
 
