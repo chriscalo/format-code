@@ -2,6 +2,8 @@
 
 Implement remark plugin to format code blocks and raw HTML within Markdown.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all plugin implementation must produce running code with tests.
+
 ## Workspace
 Create `workspace/06-markdown-embedding/` for:
 - `plugins/remark-format-code-blocks.js` implementation

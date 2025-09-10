@@ -2,6 +2,8 @@
 
 Implement rehype plugin to format `<script>` and `<style>` blocks within HTML.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all plugin implementation must produce running code with tests.
+
 ## Workspace
 Create `workspace/05-html-embedding/` for:
 - `plugins/rehype-format-embedded.js` implementation

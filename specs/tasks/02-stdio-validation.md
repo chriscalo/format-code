@@ -2,6 +2,8 @@
 
 Test whether each formatter can meet the stdio goals identified in the research phase.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all validation must produce running code with tests.
+
 **Links you need:**
 - [Project context with validated tools](../project-context.md) - Check tool selections from task 01
 - [Previous task results](../../workspace/01-tool-research/) - Reference example implementations

@@ -1,0 +1,27 @@
+networks:
+  default:
+    driver: bridge
+services:
+  app:
+    environment:
+      DEBUG: true
+      NODE_ENV: production
+    image: node:18
+    ports:
+      - '3000:3000'
+      - '8080:8080'
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+  database:
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_PASSWORD: secret123
+      POSTGRES_USER: admin
+    image: postgres:15
+    ports:
+      - '5432:5432'
+version: '3.8'
+volumes:
+  data:
+    driver: local

@@ -2,6 +2,8 @@
 
 Test the complete orchestrator with complex real-world scenarios and edge cases.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all tests must be executable code that validates functionality.
+
 ## Workspace
 Create `workspace/08-integration-testing/` for:
 - `tests/` directory with Node.js test runner setup

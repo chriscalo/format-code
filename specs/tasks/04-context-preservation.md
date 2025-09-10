@@ -2,6 +2,8 @@
 
 Implement indentation detection, normalization, and reapplication for embedded content.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all algorithms must be validated with running code and tests.
+
 ## Workspace
 Create `workspace/04-context-preservation/` for:
 - `utils/context-preservation.js` implementation

@@ -2,6 +2,8 @@
 
 Implement validation system to ensure embedded content formats identically to standalone files.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all validation logic must be verified with running code and tests.
+
 ## Workspace
 Create `workspace/07-parity-validation/` for:
 - `utils/embedding-parity.js` implementation

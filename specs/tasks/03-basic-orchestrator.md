@@ -2,6 +2,8 @@
 
 Build the core orchestrator that can format individual files without embedding complexity.
 
+**PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all implementation must produce running code with tests.
+
 **Links you need:**
 - [Project context with validated tools](../project-context.md) - Tool selections from task 01
 - [Previous task results](../../workspace/01-tool-research/) - Tool research findings  

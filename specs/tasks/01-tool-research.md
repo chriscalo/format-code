@@ -56,18 +56,19 @@ Which tools actually do what we need before we bother installing them?
 **Plugin Development**: AST-based transformation, TypeScript support, Settings registration with unified
 **Maintenance**: Active unified collective project, compatible with maintained Node.js versions
 
-### YAML: js-yaml (custom formatter approach)
+### YAML: js-yaml (LIMITATION DISCOVERED)
 - [x] js-yaml supports custom formatting? **YES** - dump() with extensive options: lineWidth, flowLevel, sortKeys, indentation
 - [x] stdin/stdout capable? **YES** - can build CLI wrapper, Node.js streams, programmatic usage
-- [x] Configurable for specific styles? **YES** - highly configurable dump options, custom schema support
+- [x] Configurable for specific styles? **PARTIAL** - highly configurable dump options, BUT **CANNOT PRESERVE COMMENTS**
 
 **Installation**: `npm install js-yaml` 
-**stdin/stdout**: Can build custom CLI using Node.js stdin/stdout with js-yaml.load() and js-yaml.dump()
-**Configuration**: dump() options: lineWidth, flowLevel, sortKeys, noRefs, skipInvalid, replacer function
-**Custom Implementation**: Need to write wrapper CLI to match style guide requirements exactly
-**Maintenance**: Stable (v4.1.0), widely used (21k+ dependents), proven in production
+**stdin/stdout**: CLI wrapper implemented at `workspace/01-tool-research/format-yaml.js`
+**Configuration**: dump() options: lineWidth, flowLevel, sortKeys, noRefs, skipInvalid, quotingType
+**POC Results**: ✅ Working formatter with tests, BUT ❌ **Comments are stripped** (fundamental js-yaml limitation)
+**Test Status**: 2/5 tests passing - comment preservation tests fail
+**Alternative Options**: YAWN-YAML, enhanced-yaml exist but not evaluated
 
-**Approach**: Since no existing YAML formatter meets all requirements perfectly, build custom formatter using js-yaml's configurable dump() method to match exact style guide needs
+**DECISION**: js-yaml has fundamental comment preservation limitation. **REQUIRES NEW RESEARCH TASK** for comment-preserving YAML formatters.
 
 ### JSON/JSONC: ESLint + @eslint/json (2024 official)
 - [x] ESLint + @eslint/json works via stdin/stdout? **YES** - native ESLint `--stdin` flag, `--stdin-filename` support
@@ -163,19 +164,21 @@ Which tools actually do what we need before we bother installing them?
 4. **Configuration management** for all tools
 
 ### Development Gaps Identified:
-- YAML: No existing formatter perfectly matches style guide requirements
+- **YAML**: js-yaml cannot preserve comments - **REQUIRES FOLLOW-UP RESEARCH TASK**
 - Integration: Need orchestrator to manage multiple tools consistently  
 - Context: Need system to preserve context when formatting embedded blocks
 
 ## Success Criteria & Documentation
 
 - Each tool must pass ALL deal-breaker criteria (macOS, stdin/stdout OR API, configurable, extensible)
+- **PROOF OF CONCEPT REQUIRED**: Working code + tests for each tool
 - **Document findings for each tool:**
   - Installation method and any issues encountered
   - Specific configuration options available  
   - Plugin ecosystem status (active, maintained, extensive?)
   - stdin/stdout support details (command-line flags, limitations)
   - Any deal-breaker limitations discovered
+  - **POC file location and test results**
   - Alternative tools considered if primary choice fails
 - **Create tool selection report** with go/no-go decisions and rationale ✅
 - **Document gaps** that will require custom plugin development ✅

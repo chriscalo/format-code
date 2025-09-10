@@ -3,11 +3,25 @@
 ## Overview
 This directory contains autonomous design validation tasks for the Code Formatting Orchestrator design. Each task is split into a separate file for focused context management.
 
-**CRITICAL: Document everything as you go.** Add your findings directly to the task file you're working on. Save any authored source code (config files, plugins, test scripts) as code blocks in the task file for reuse later. The point is not just to validate that things work, but to create a comprehensive record of findings and implementation decisions.
+**CRITICAL: Proof of Concept Requirements**
+- **Running code required**: Every tool must have a working POC implementation
+- **Tests required**: Use `node:test` to validate POC functionality 
+- **Save everything**: Code files, test files, input/output examples in workspace/
+- **Document in task file**: Add findings, but the POC code is the real proof
 
-## Architecture: Orchestrator + Task Agents
+**POC Structure Conventions** (for formatter research tasks only):
+- **Workspace folder**: `workspace/[task-id]/[lang]/` (e.g., `workspace/01-tool-research/yaml/`)
+- **Formatter**: `format-[lang].js` (e.g., `format-yaml.js`, `format-html.js`, `format-js.js`)  
+- **Test file**: `format-[lang].test.js` (matching the formatter name)
+- **Input/Output**: `input.[ext]`, `expected.[ext]` for test validation
+- **README**: Document usage, files, and test results per language folder
+- **Use short names**: `js` not `javascript`, `yaml` not `yml`, `html` not `markup`
 
-### For Orchestrator Agents
+The point is not just to validate that things work theoretically, but to create working implementations with tests that prove functionality.
+
+## Architecture: Conductor + Task Agents
+
+### For Conductor Agents
 **Your context**: This file (specs/tasks/00-design-tasks.md) - that's it!
 
 **Your role**: Like a project manager - monitor progress and make course corrections, NOT execute tasks.
@@ -30,12 +44,12 @@ This directory contains autonomous design validation tasks for the Code Formatti
 3. Work in `workspace/[your-task-id]/` 
 4. Document findings in your task file as you go
 5. Update task status: `ready` → `working` → `done` in specs/tasks/00-design-tasks.md
-6. **Only contact orchestrator if truly stuck** - most questions should be answerable from your task file links
+6. **Only contact conductor if truly stuck** - most questions should be answerable from your task file links
 
 **Communication protocol**: 
 - ✅ **Report completion**: "Task [ID] complete, status updated to done"
 - ✅ **Report blocking issues**: "Task [ID] blocked: [brief issue], need guidance on [specific question]"  
-- ❌ **Don't dump context**: Don't send detailed findings, logs, or implementation details to orchestrator
+- ❌ **Don't dump context**: Don't send detailed findings, logs, or implementation details to conductor
 - ❌ **Don't ask permission**: Make decisions based on your task file and links
 
 ---
