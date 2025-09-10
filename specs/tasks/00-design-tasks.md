@@ -26,11 +26,11 @@ Tasks must be completed in dependency order. Multiple agents can work simultaneo
 
 ```yaml
 01-tool-research:
-  status: working
+  status: done
   dependencies: []
 
 02-stdio-validation:
-  status: waiting
+  status: ready
   dependencies: [01-tool-research]
 
 03-basic-orchestrator:
