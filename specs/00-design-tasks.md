@@ -22,10 +22,18 @@ Which tools actually do what we need before we bother installing them?
 - [ ] Make go/no-go decisions on tool selection before installation
 
 ### 2. **Basic Tool Execution**  
-Can we actually run each tool for every target language?
+Can each formatter meet our stdin/stdout interface requirements?
 - [ ] Install only the tools that passed feasibility research
-- [ ] Get each tool to format a simple example via stdin/stdout
-- [ ] Verify they exit cleanly and produce expected output
+- [ ] Test stdin/stdout interface for each tool:
+  - [ ] HTML: rehype-format accepts content via stdin, outputs to stdout
+  - [ ] JavaScript: ESLint + js-beautify work via stdin/stdout  
+  - [ ] CSS/SCSS: Stylelint accepts stdin, outputs formatted CSS to stdout
+  - [ ] Markdown: remark-stringify processes via stdin/stdout
+  - [ ] YAML: yamlfmt works with stdin/stdout interface
+  - [ ] JSON/JSONC: ESLint jsonc processes via stdin/stdout
+  - [ ] Python: ruff/black accept stdin and output to stdout
+- [ ] Verify clean exit codes (0 for success, non-zero for errors)
+- [ ] Test error handling: malformed input produces helpful error messages
 
 ### 3. **Formatting Rules via Plugins**
 Can we get the desired formatting behavior?
@@ -57,19 +65,22 @@ Can we write plugins for rules that don't exist?
 - [ ] Test custom plugins integrate properly with existing toolchains
 - [ ] Document plugin development process for future rule additions
 
-<!-- REVIEW PROGRESS CURSOR -->
-
 ### 5. **HTML Embedded Languages (rehype)**
 Can we format JS and CSS inside HTML?
-- [ ] Parse HTML with rehype to find `<script>` and `<style>` blocks
+- [ ] Configure rehype to find `<script>` and `<style>` blocks and call our formatters
 - [ ] Extract content, format with ESLint/Stylelint, reinsert
 - [ ] Verify embedded formatting matches standalone formatting
 
+<!-- REVIEW PROGRESS CURSOR -->
+
 ### 6. **Advanced HTML Features**
-Can we handle line lengths and contextual indentation in HTML?
-- [ ] Test effective width calculation (maxWidth - indentOffset)
-- [ ] Test uniform indentation reapplication after formatting
-- [ ] Handle deeply nested HTML with embedded code
+Can we handle inherited indentation and combined line lengths in HTML?
+- [ ] Calculate inherited indentation from HTML context
+- [ ] Calculate effective line width (maxWidth - indentOffset) for embedded content
+- [ ] Format embedded JS/CSS with adjusted width constraints
+- [ ] Reapply uniform indentation to formatted embedded content
+- [ ] Test deeply nested HTML with embedded code
+- [ ] Verify combined formatting meets style guide rules for all languages
 
 ### 7. **Markdown Embedded Languages (remark)**
 Can we format code blocks in Markdown?
