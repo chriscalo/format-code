@@ -90,7 +90,7 @@ The point is not just to validate that things work theoretically, but to create 
   note: "JavaScript formatter POC in progress - workspace/01-tool-research/js/"
 
 01c-poc-css:
-  status: ready
+  status: working
   dependencies: [01-tool-research]
   note: "CSS/SCSS formatter POC (Stylelint)"
 

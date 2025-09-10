@@ -2,6 +2,34 @@
 
 **ALL TASKS MUST PRODUCE RUNNING CODE WITH TESTS**
 
+## CRITICAL: Tool Usage for Task Agents
+
+**GOAL: ZERO APPROVAL PROMPTS FROM USER**
+
+Task agents MUST follow these tool usage rules to avoid approval prompts:
+
+### ❌ NEVER Use These Bash Commands
+- `cat`, `head`, `tail` → Use **Read** tool instead
+- `echo > file`, `cat > file` → Use **Write** tool instead  
+- `sed`, `awk`, text manipulation → Use **Edit/MultiEdit** tools instead
+- `find`, `ls` with patterns → Use **Glob** tool instead
+- `grep`, `rg`, `ack` → Use **Grep** tool instead
+- Any other arbitrary bash commands → Find the appropriate tool
+
+### ✅ ONLY Pre-Approved Commands
+These commands can be used without approval:
+- `npm install [package]` - Installing dependencies
+- `npm test` - Running tests
+- `npm run [script-name]` - Running existing package.json scripts
+- `node [file.js]` - Running JavaScript files directly
+
+### Package.json Script Management
+- **CHECK FIRST**: Always read package.json before running scripts
+- **REUSE**: Use existing scripts like `test`, `format` 
+- **MODIFY**: Edit existing scripts instead of creating new ones
+- **NO DUPLICATES**: Never create `test2`, `test-final`, etc.
+- **CONSOLIDATE**: If package.json has 10+ scripts, clean up instead of adding more
+
 ## Requirements
 
 - ✅ **Working implementation**: Every tool/approach must have functioning code
