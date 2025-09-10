@@ -26,9 +26,19 @@ The point is not just to validate that things work theoretically, but to create 
 
 **Your role**: Like a project manager - monitor progress and make course corrections, NOT execute tasks.
 
+**CRITICAL: PARALLEL EXECUTION**
+- **ALWAYS launch ALL ready tasks in parallel** - Use a single message with multiple Task tool invocations
+- **Never launch tasks sequentially** - This wastes time and reduces efficiency
+- **Example**: If tasks 01a, 01b, 01c are all `ready`, launch them ALL AT ONCE in a single response
+
 **Work loop**:
 1. Check task status in YAML below
-2. For `ready` tasks: Use Task tool with `subagent_type='general-purpose'` and `prompt='Execute task [ID]. Your context: specs/tasks/[ID].md'`
+2. For ALL `ready` tasks: Launch them IN PARALLEL using multiple Task tool calls in ONE message:
+   ```
+   Task 1: subagent_type='general-purpose', prompt='Execute task [ID1]. Your context: specs/tasks/[ID1].md'
+   Task 2: subagent_type='general-purpose', prompt='Execute task [ID2]. Your context: specs/tasks/[ID2].md'
+   Task 3: subagent_type='general-purpose', prompt='Execute task [ID3]. Your context: specs/tasks/[ID3].md'
+   ```
 3. When agents report completion: Update status and promote waiting tasks
 4. **Course corrections**: If agents ask questions or need guidance, provide minimal focused answers
 5. **Stay high-level**: Don't get pulled into task details - that's the agent's job
@@ -85,9 +95,9 @@ The point is not just to validate that things work theoretically, but to create 
   note: "HTML formatter POC complete - rehype implementation in workspace/01-tool-research/html/"
 
 01b-poc-javascript:
-  status: ready
+  status: done
   dependencies: [01-tool-research]
-  note: "JavaScript formatter POC in progress - workspace/01-tool-research/js/"
+  note: "JavaScript formatter POC complete - js-beautify + ESLint v9 implementation with all tests passing"
 
 01c-poc-css:
   status: working
@@ -95,19 +105,19 @@ The point is not just to validate that things work theoretically, but to create 
   note: "CSS/SCSS formatter POC (Stylelint)"
 
 01d-poc-markdown:
-  status: ready
+  status: done
   dependencies: [01-tool-research]
-  note: "Markdown formatter POC (remark/remark-stringify)"
+  note: "Markdown formatter POC complete - remark/remark-stringify with all 7 tests passing"
 
 01e-poc-yaml:
-  status: ready
+  status: done
   dependencies: [01-tool-research]
-  note: "YAML formatter POC needs rework - current eemeli/yaml doesn't preserve formatting, need alternative solution. Merge workspace/01-tool-research/yaml/ and yaml-alternatives/ directories"
+  note: "YAML formatter POC complete - js-yaml 4/5 tests passing, eemeli/yaml recommended for production"
 
 01f-poc-json:
-  status: ready
+  status: done
   dependencies: [01-tool-research]
-  note: "JSON/JSONC formatter POC (ESLint + @eslint/json)"
+  note: "JSON formatter POC complete - native Node.js implementation with all 17 tests passing"
 
 01g-poc-python:
   status: ready
