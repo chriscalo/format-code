@@ -71,12 +71,10 @@ Can we format JS and CSS inside HTML?
 - [ ] Extract content, format with ESLint/Stylelint, reinsert
 - [ ] Verify embedded formatting matches standalone formatting
 
-<!-- REVIEW PROGRESS CURSOR -->
-
 ### 6. **Advanced HTML Features**
 Can we handle inherited indentation and combined line lengths in HTML?
-- [ ] Calculate inherited indentation from HTML context
-- [ ] Calculate effective line width (maxWidth - indentOffset) for embedded content
+- [ ] Calculate and apply inherited indentation from HTML context
+- [ ] Calculate and apply effective line width (maxWidth - indentOffset) for embedded content
 - [ ] Format embedded JS/CSS with adjusted width constraints
 - [ ] Reapply uniform indentation to formatted embedded content
 - [ ] Test deeply nested HTML with embedded code
@@ -84,13 +82,19 @@ Can we handle inherited indentation and combined line lengths in HTML?
 
 ### 7. **Markdown Embedded Languages (remark)**
 Can we format code blocks in Markdown?
-- [ ] Parse Markdown with remark to find fenced code blocks
-- [ ] Format JS, CSS, YAML, JSON, HTML code blocks
+- [ ] Configure remark to find fenced code blocks and call our formatters
+- [ ] Format JS, CSS, YAML, JSON, HTML, Python code blocks
 - [ ] Preserve fence syntax and info strings
 
+<!-- REVIEW PROGRESS CURSOR -->
+
 ### 8. **Advanced Markdown Features** 
-Can we handle line lengths and contextual indentation in Markdown?
-- [ ] Test formatting code blocks nested in lists/quotes
-- [ ] Handle indentation context preservation
-- [ ] Test complex embedding scenarios
+Can we handle inherited indentation and combined line lengths in Markdown?
+- [ ] Calculate and apply inherited indentation from Markdown context (lists, quotes, etc.)
+- [ ] Calculate and apply effective line width (maxWidth - indentOffset) for nested code blocks
+- [ ] Format embedded code with adjusted width constraints
+- [ ] Reapply uniform indentation to formatted code blocks
+- [ ] Test deeply nested Markdown with embedded code blocks
+- [ ] Test triple embedding: Markdown → HTML → JS/CSS (complex but critical scenario)
+- [ ] Verify combined formatting meets style guide rules for all languages
 
