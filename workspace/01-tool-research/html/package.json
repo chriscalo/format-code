@@ -1,0 +1,30 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test format-html.test.js",
+    "format": "node format-and-save.js",
+    "compare": "node compare-output.js",
+    "test-formatter": "node test-formatter.js",
+    "check": "node check-tests.js",
+    "full-test": "node --test full-test.js",
+    "final-test": "node final-test.js",
+    "test-check": "node run-test-check.js",
+    "verify": "node verify.js",
+    "test-now": "node test-now.js",
+    "check-tests": "node --test format-html.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "rehype": "^13.0.2",
+    "rehype-format": "^5.0.1",
+    "rehype-parse": "^9.0.1",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5"
+  }
+}
