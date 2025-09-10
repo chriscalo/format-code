@@ -20,6 +20,19 @@
 
 **Use short names**: `js` not `javascript`, `yaml` not `yml`, `html` not `markup`
 
+## Test Requirements
+
+**THE ONLY ACCEPTABLE TEST**: Tests MUST assert that the formatter's output exactly matches `expected.[ext]`
+- ✅ Read `input.[ext]` → Format it → Assert output === `expected.[ext]`  
+- ❌ No partial validation, no "close enough", no manual inspection
+- ❌ No other test types unless explicitly documenting failures
+
+```javascript
+// This is the ONLY acceptable test pattern:
+const output = await runFormatter(input);
+assert.strictEqual(output, expected, 'Output must match expected.[ext] exactly');
+```
+
 ## Success Criteria
 
 Tasks are only complete when:

@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 const formatterPath = path.join(__dirname, 'format-html.js');
 const inputFile = path.join(__dirname, 'input.html');
 const expectedFile = path.join(__dirname, 'expected.html');
+const outputFile = path.join(__dirname, 'output.html');
 
 async function runFormatter(input) {
   return new Promise((resolve, reject) => {
@@ -46,7 +47,12 @@ test('formatter output matches expected.html', async () => {
   const input = fs.readFileSync(inputFile, 'utf-8');
   const expected = fs.readFileSync(expectedFile, 'utf-8');
   
+  // Run formatter and write output to file
   const output = await runFormatter(input);
+  fs.writeFileSync(outputFile, output);
   
-  assert.strictEqual(output, expected, 'Output should match expected.html exactly');
+  // Read the output file back and compare
+  const actualOutput = fs.readFileSync(outputFile, 'utf-8');
+  
+  assert.strictEqual(actualOutput, expected, 'Output must match expected.html exactly');
 });
