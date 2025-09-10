@@ -1,0 +1,29 @@
+# Example YAML file
+version: "3.8"
+services:
+  app:
+      # TODO: update to v24
+    image:     node:18
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    environment:
+      NODE_ENV:  production
+      DEBUG:    true
+    volumes:
+      - "./src:/app/src"
+      - "./package.json:/app/package.json"
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB:       myapp
+      POSTGRES_USER:   admin
+      POSTGRES_PASSWORD: secret123     # TODO: move to secrets manager
+    ports:
+      - "5432:5432"
+networks:
+  default:
+    driver: bridge
+volumes:
+  data:
+    driver: local
