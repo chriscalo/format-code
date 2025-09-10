@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Basic Orchestrator Framework
 
 Build the core orchestrator that can format individual files without embedding complexity.

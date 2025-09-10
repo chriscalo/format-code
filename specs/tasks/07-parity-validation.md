@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Embedding Parity Validation
 
 Implement validation system to ensure embedded content formats identically to standalone files.

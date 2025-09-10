@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Integration Testing & Real-World Validation
 
 Test the complete orchestrator with complex real-world scenarios and edge cases.

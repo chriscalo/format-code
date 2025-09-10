@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Context Preservation System
 
 Implement indentation detection, normalization, and reapplication for embedded content.

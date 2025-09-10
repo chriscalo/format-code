@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # HTML Embedding Support
 
 Implement rehype plugin to format `<script>` and `<style>` blocks within HTML.

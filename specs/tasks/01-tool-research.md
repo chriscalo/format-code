@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Tool Research and Feasibility
 
 Which tools actually do what we need before we bother installing them?

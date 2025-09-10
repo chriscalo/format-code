@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # Markdown Embedding Support
 
 Implement remark plugin to format code blocks and raw HTML within Markdown.

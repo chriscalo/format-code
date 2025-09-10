@@ -1,9 +1,3 @@
----
-status: pending
-started: null
-completed: null
----
-
 # stdin/stdout Interface Validation
 
 Test whether each formatter can meet the stdio goals identified in the research phase.
