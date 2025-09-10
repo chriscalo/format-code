@@ -2,6 +2,8 @@
 
 Test whether each formatter can meet the stdio goals identified in the research phase.
 
+**IMPORTANT**: Before starting, read [project-context.md](../project-context.md) for tool selections and constraints from task 01-tool-research.
+
 ## Workspace
 Create `workspace/02-stdio-validation/` for:
 - Test scripts and input files
@@ -38,17 +40,20 @@ Create `workspace/02-stdio-validation/` for:
 - [ ] Test that code block content is preserved (not formatted by remark)
 - [ ] Document configuration for consistent output
 
-### YAML: yamlfmt
-- [ ] Test `echo 'key: value\nother:   data' | yamlfmt`
-- [ ] Verify stdin/stdout support works correctly
-- [ ] Test configuration file detection and usage
-- [ ] Document installation and configuration requirements
+### YAML: js-yaml (custom CLI approach)
+- [ ] Build custom CLI wrapper using js-yaml from task 01 research
+- [ ] Test `echo 'key: value\nother:   data' | node yaml-formatter.js`
+- [ ] Verify custom stdin/stdout implementation works correctly
+- [ ] Test js-yaml.dump() configuration options for style guide compliance
+- [ ] Document custom CLI requirements and configuration
 
-### JSON/JSONC: ESLint + jsonc-eslint-parser
-- [ ] Test `echo '{"a":1,"b":2}' | npx eslint --stdin --parser @typescript-eslint/parser`
-- [ ] Verify JSONC (with comments) support
+### JSON/JSONC: ESLint + @eslint/json
+- [ ] Test `echo '{"a":1,"b":2}' | npx eslint --stdin --stdin-filename test.json`
+- [ ] Test with @eslint/json plugin (2024 official approach from research)
+- [ ] Verify JSONC (with comments) support using language: "json/jsonc"
 - [ ] Test key order preservation capabilities
-- [ ] Document ESLint rule configuration for JSON formatting
+- [ ] Alternative: Test eslint-plugin-jsonc if @eslint/json insufficient
+- [ ] Document ESLint flat config setup for JSON formatting
 
 ### Python: ruff/black
 - [ ] Test `echo 'def f():return 1' | black -`

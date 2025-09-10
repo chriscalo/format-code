@@ -9,6 +9,12 @@ This directory contains autonomous design validation tasks for the Code Formatti
 
 **AUTONOMOUS EXECUTION REQUIRED**: When an agent is pointed to this file, they should immediately begin autonomous execution by claiming and working on the next available task. Do not ask for permission or clarification.
 
+**IMPORTANT CONSTRAINTS**: Before making any tool recommendations, agents MUST:
+1. **Check project preferences** - Review STYLE_GUIDE.md and project-context.md for tool restrictions
+2. **Understand actual requirements** - Don't assume language-specific tools are needed if general tools can meet the requirement  
+3. **Respect ecosystem preferences** - Prefer npm/JavaScript ecosystem unless requirements cannot be met
+4. **Never recommend Prettier** - This tool is explicitly forbidden for this project
+
 **To claim and work on the next available task:**
 
 1. **Find next available task** with status `ready` below

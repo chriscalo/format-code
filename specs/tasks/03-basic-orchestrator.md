@@ -2,6 +2,8 @@
 
 Build the core orchestrator that can format individual files without embedding complexity.
 
+**IMPORTANT**: Before starting, read [project-context.md](../project-context.md) for validated tool selections from tasks 01-02. Use only the tools marked as ✅ validated.
+
 ## Workspace
 Create `workspace/03-basic-orchestrator/` for:
 - `scripts/format/` directory structure
