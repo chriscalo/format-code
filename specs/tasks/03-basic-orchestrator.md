@@ -1,0 +1,70 @@
+---
+status: pending
+started: null
+completed: null
+---
+
+# Basic Orchestrator Framework
+
+Build the core orchestrator that can format individual files without embedding complexity.
+
+## Context
+- Line length: 80 characters
+- Indentation: 2 spaces
+- File patterns: `**/*.{html,js,css,scss,md,yml,yaml,json,jsonc,py}`
+- This establishes the foundation before tackling embedded content
+
+## Implementation Tasks
+
+### Project Structure
+- [ ] Create `scripts/format/index.js` as CLI entry point (ESM)
+- [ ] Create `scripts/format/config/orchestrator.config.js` with file patterns
+- [ ] Create `scripts/format/formatters/` directory for tool adapters
+- [ ] Create `scripts/format/utils/` directory for shared utilities
+
+### Core Infrastructure
+- [ ] Implement file discovery with glob patterns
+- [ ] Create `utils/files.js` with globbing and ignore rules
+- [ ] Create `utils/io.js` for safe read/write operations
+- [ ] Create `utils/errors.js` for typed error handling (FormatterError)
+
+### Formatter Adapters
+- [ ] Create `formatters/spawn.js` for subprocess management
+- [ ] Create `formatters/html.js` using rehype-format
+- [ ] Create `formatters/javascript.js` using ESLint
+- [ ] Create `formatters/css.js` using Stylelint  
+- [ ] Create `formatters/markdown.js` using remark-stringify
+- [ ] Create `formatters/yaml.js` using yamlfmt
+- [ ] Create `formatters/json.js` using ESLint + jsonc-eslint-parser
+- [ ] Create `formatters/python.js` using ruff or black
+
+### CLI Interface
+- [ ] Implement `--only <lang>` flag for single language formatting
+- [ ] Implement `--max-width <n>` flag (default 80)
+- [ ] Add basic error handling and progress reporting
+- [ ] Create npm script: `"format": "node scripts/format/index.js"`
+
+### Configuration Files
+- [ ] Create `.eslintrc.js` with formatting rules (semicolons, double quotes, trailing commas)
+- [ ] Create `.stylelintrc.js` with CSS formatting and property ordering
+- [ ] Create `.yamlfmt` config with minimal quoting preference
+- [ ] Document Python formatter configuration (ruff.toml or pyproject.toml)
+
+## Testing
+- [ ] Test each formatter adapter in isolation
+- [ ] Test file discovery with various glob patterns
+- [ ] Test CLI flags and error handling
+- [ ] Verify deterministic output (same input → same output)
+
+## Success Criteria
+- Can format any single-language file correctly
+- All formatters use consistent style preferences
+- Clean error messages for malformed files
+- Deterministic and idempotent results
+- No file corruption or data loss
+
+## Documentation Requirements
+- Document exact configuration for each tool
+- Record any tool-specific limitations discovered
+- Note version requirements and installation commands
+- Document the adapter interface pattern for future extensions
