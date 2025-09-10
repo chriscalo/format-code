@@ -4,6 +4,14 @@ Implement indentation detection, normalization, and reapplication for embedded c
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all algorithms must be validated with running code and tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create test files and utilities
+- Use `Read` tool to check implementation results
+- Use `Edit` or `MultiEdit` tools for code modifications
+- Use npm scripts from package.json when available
+- Only use Bash for running tests and npm commands
+
 ## Workspace
 Create `workspace/04-context-preservation/` for:
 - `utils/context-preservation.js` implementation

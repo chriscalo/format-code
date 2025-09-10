@@ -3,17 +3,16 @@
 ## Task Context
 This task is part of the formatter POC validation suite. Your goal is to validate or build a working JavaScript formatter.
 
-## CRITICAL: PASSING TESTS ARE MANDATORY
-**THE ONLY ACCEPTABLE OUTCOME IS ALL TESTS PASSING**
+## Common Requirements
+**IMPORTANT**: Follow all requirements in [poc-requirements.md](./poc-requirements.md)
+- Tool usage rules (zero approvals goal)
+- NPM scripts philosophy (reuse, don't proliferate)
+- Test requirements (all must pass)
+- Code organization (one formatter, one test file)
 
-1. **First check** if `workspace/01b-poc-javascript/` or `workspace/01-tool-research/js/` exists
-2. **If tests exist**: Run them
-   - ✅ If ALL tests pass → Mark task as done, document success
-   - ❌ If ANY test fails → YOU MUST fix them until ALL pass
-3. **If no tests exist**: Create the POC from scratch
-4. **DO NOT** mark task as done with failing tests
-5. **DO NOT** document "known limitations" as an excuse for failures
-6. **ALWAYS** document your fixes and final success at the bottom of this file
+## Task-Specific Requirements
+- **Check folders**: `workspace/01b-poc-javascript/` or `workspace/01-tool-research/js/`
+- **Run tests**: Use `npm test` - ALL must pass for task completion
 
 ## Tool Selection
 **JavaScript**: ESLint + js-beautify

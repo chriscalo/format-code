@@ -3,17 +3,18 @@
 ## Task Context
 This task is part of the formatter POC validation suite. Your goal is to validate or build a working YAML formatter that preserves comments.
 
-## CRITICAL: PASSING TESTS ARE MANDATORY
-**THE ONLY ACCEPTABLE OUTCOME IS PASSING TESTS**
+## Common Requirements
+**IMPORTANT**: Follow all requirements in [poc-requirements.md](./poc-requirements.md)
+- Tool usage rules (zero approvals goal)
+- NPM scripts philosophy (reuse, don't proliferate)
+- Test requirements (all must pass)
+- Code organization (one formatter, one test file)
 
-1. **First check** if `workspace/01e-poc-yaml/`, `workspace/01-tool-research/yaml/`, or `workspace/01-tool-research/yaml-alternatives/` exists
-2. **If tests exist**: Run them
-   - ✅ If tests meet or exceed 67% pass rate (4/6 tests) → Mark task as done
-   - ❌ If tests fail below 67% → YOU MUST fix them or find better solution
-3. **If no tests exist**: Create the POC from scratch
-4. **MINIMUM REQUIREMENT**: 67% pass rate (4/6 tests) as documented
-5. **DO NOT** mark task done if below 67% pass rate
-6. **ALWAYS** document your fixes and final success at the bottom of this file
+## Task-Specific Requirements
+- **Check folders**: `workspace/01e-poc-yaml/`, `workspace/01-tool-research/yaml/`, or `workspace/01-tool-research/yaml-alternatives/`
+- **Run tests**: Use `npm test`
+- **Special acceptance criteria**: 67% pass rate (4/6 tests) acceptable for YAML due to comment preservation challenges
+- **Document results** at the bottom of this file
 
 ## Tool Selection
 **YAML**: eemeli/yaml (winner after testing 3 libraries)

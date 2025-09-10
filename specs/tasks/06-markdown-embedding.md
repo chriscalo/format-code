@@ -4,6 +4,14 @@ Implement remark plugin to format code blocks and raw HTML within Markdown.
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all plugin implementation must produce running code with tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create plugin files and test documents
+- Use `Read` tool to verify formatted output
+- Use `Edit` or `MultiEdit` tools for plugin code changes
+- Use npm scripts from package.json when available
+- Only use Bash for running tests and npm commands
+
 ## Workspace
 Create `workspace/06-markdown-embedding/` for:
 - `plugins/remark-format-code-blocks.js` implementation

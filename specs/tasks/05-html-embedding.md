@@ -4,6 +4,14 @@ Implement rehype plugin to format `<script>` and `<style>` blocks within HTML.
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all plugin implementation must produce running code with tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create plugin files and test cases
+- Use `Read` tool to check plugin outputs
+- Use `Edit` or `MultiEdit` tools for plugin development
+- Use npm scripts from package.json when available
+- Only use Bash for running tests and npm commands
+
 ## Workspace
 Create `workspace/05-html-embedding/` for:
 - `plugins/rehype-format-embedded.js` implementation

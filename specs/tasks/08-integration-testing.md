@@ -4,6 +4,15 @@ Test the complete orchestrator with complex real-world scenarios and edge cases.
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all tests must be executable code that validates functionality.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create test files and fixtures
+- Use `Read` tool to verify test outputs
+- Use `Edit` or `MultiEdit` tools for test implementation
+- Use `Glob` and `Grep` tools for searching test results
+- Use npm scripts from package.json when available
+- Only use Bash for running test suites and npm commands
+
 ## Workspace
 Create `workspace/08-integration-testing/` for:
 - `tests/` directory with Node.js test runner setup

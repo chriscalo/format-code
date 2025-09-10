@@ -38,15 +38,20 @@ The point is not just to validate that things work theoretically, but to create 
 ### For Task Execution Agents
 **Your context**: You'll be given a single task file (e.g., `specs/tasks/02-stdio-validation.md`)
 
-**Tool Usage Guidelines** (IMPORTANT for YOLO mode):
-- **Prefer native tools over bash commands** to minimize approval prompts:
-  - Use `Read` instead of `cat`, `head`, `tail`
-  - Use `Write` instead of `echo > file` or `cat > file`
-  - Use `Edit` instead of `sed`, `awk`, or other text manipulation
-  - Use `Glob` instead of `find` or `ls` with patterns
-  - Use `Grep` instead of `grep`, `rg`, or `ack`
-- **For running formatters**: Use npm tasks when available (check package.json scripts)
-- **Only use Bash for**: Running formatters, npm commands, git operations, or system tools
+**Tool Usage Guidelines** (GOAL: ZERO APPROVAL PROMPTS):
+- **NEVER use arbitrary bash commands** - The goal is ZERO approvals from the user
+- **REQUIRED: Use these tools instead of bash**:
+  - Use `Read` tool instead of `cat`, `head`, `tail` 
+  - Use `Write` tool instead of `echo > file` or `cat > file`
+  - Use `Edit/MultiEdit` tools instead of `sed`, `awk`, or text manipulation
+  - Use `Glob` tool instead of `find` or `ls` with patterns
+  - Use `Grep` tool instead of `grep`, `rg`, or `ack`
+- **REUSE existing npm scripts** - Stop creating new script entries!
+  - Check package.json first - use existing scripts like `test`, `format`
+  - Modify existing script commands instead of adding `test2`, `test-final`, etc.
+  - If package.json has 10+ scripts, consolidate instead of adding more
+- **Pre-approved commands only**: `npm install`, `npm test`, `npm run [any-script]`, `node [file.js]`
+- **Keep it clean**: One test file, one formatter per language - modify don't duplicate
 
 **Your role**: 
 1. Read your task file and follow any links it contains

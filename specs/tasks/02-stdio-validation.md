@@ -4,6 +4,13 @@ Test whether each formatter can meet the stdio goals identified in the research 
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all validation must produce running code with tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create test files instead of `echo > file`
+- Use `Read` tool to check outputs instead of `cat`
+- Use npm scripts from package.json when available
+- Only use Bash for running formatters and npm commands
+
 **Links you need:**
 - [Project context with validated tools](../project-context.md) - Check tool selections from task 01
 - [Previous task results](../../workspace/01-tool-research/) - Reference example implementations
@@ -24,37 +31,37 @@ Create `workspace/02-stdio-validation/` for:
 ## Validation Tests
 
 ### HTML: rehype-format
-- [ ] Test `echo '<div><span>test</span></div>' | npx rehype --use rehype-format`
+- [ ] Create test file with `Write` tool, then test: `npx rehype --use rehype-format < input.html`
 - [ ] Verify clean stdin/stdout with no file I/O required
 - [ ] Document any limitations or configuration needs
 
 ### JavaScript: ESLint
-- [ ] Test `echo 'const x={a:1,b:2}' | npx eslint --stdin --fix-dry-run`
+- [ ] Create test file with `Write` tool, then test: `npx eslint --stdin --fix-dry-run < input.js`
 - [ ] Verify ESLint can format via stdin (not just lint)
 - [ ] Test Node API alternative if CLI doesn't work
 - [ ] Document configuration requirements for formatting rules
 
 ### CSS/SCSS: Stylelint  
-- [ ] Test `echo 'body{margin:0;padding:0}' | npx stylelint --stdin --fix`
+- [ ] Create test file with `Write` tool, then test: `npx stylelint --stdin --fix < input.css`
 - [ ] Test SCSS syntax support via stdin
 - [ ] Verify --fix mode works through stdio
 - [ ] Document plugin requirements for formatting rules
 
 ### Markdown: remark-stringify
-- [ ] Test `echo '# test\n\ncode here' | npx remark`
+- [ ] Create test file with `Write` tool, then test: `npx remark < input.md`
 - [ ] Verify remark can process and format via stdin/stdout
 - [ ] Test that code block content is preserved (not formatted by remark)
 - [ ] Document configuration for consistent output
 
 ### YAML: js-yaml (custom CLI approach)
 - [ ] Build custom CLI wrapper using js-yaml from task 01 research
-- [ ] Test `echo 'key: value\nother:   data' | node yaml-formatter.js`
+- [ ] Create test file with `Write` tool, then test: `node yaml-formatter.js < input.yaml`
 - [ ] Verify custom stdin/stdout implementation works correctly
 - [ ] Test js-yaml.dump() configuration options for style guide compliance
 - [ ] Document custom CLI requirements and configuration
 
 ### JSON/JSONC: ESLint + @eslint/json
-- [ ] Test `echo '{"a":1,"b":2}' | npx eslint --stdin --stdin-filename test.json`
+- [ ] Create test file with `Write` tool, then test: `npx eslint --stdin --stdin-filename test.json < input.json`
 - [ ] Test with @eslint/json plugin (2024 official approach from research)
 - [ ] Verify JSONC (with comments) support using language: "json/jsonc"
 - [ ] Test key order preservation capabilities
@@ -62,8 +69,8 @@ Create `workspace/02-stdio-validation/` for:
 - [ ] Document ESLint flat config setup for JSON formatting
 
 ### Python: ruff/black
-- [ ] Test `echo 'def f():return 1' | black -`
-- [ ] Test `echo 'def f():return 1' | ruff format -`
+- [ ] Create test file with `Write` tool, then test: `black - < input.py`
+- [ ] Create test file with `Write` tool, then test: `ruff format - < input.py`
 - [ ] Compare output consistency between tools
 - [ ] Document which tool provides better configuration options
 

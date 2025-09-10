@@ -4,6 +4,15 @@ Build the core orchestrator that can format individual files without embedding c
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all implementation must produce running code with tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create files instead of `echo > file` or `cat > file`
+- Use `Read` tool to check file contents instead of `cat`
+- Use `Edit` or `MultiEdit` tools for file modifications instead of `sed` or `awk`
+- Use `Glob` tool to find files instead of `find` or `ls` with patterns
+- Use npm scripts from package.json when available
+- Only use Bash for running formatters, npm commands, and tests
+
 **Links you need:**
 - [Project context with validated tools](../project-context.md) - Tool selections from task 01
 - [Previous task results](../../workspace/01-tool-research/) - Tool research findings  

@@ -4,6 +4,14 @@ Implement validation system to ensure embedded content formats identically to st
 
 **PROOF REQUIRED**: See [POC Requirements](../poc-requirements.md) - all validation logic must be verified with running code and tests.
 
+## Tool Usage Guidelines (IMPORTANT for YOLO mode)
+**Prefer native tools over bash commands** to minimize approval prompts:
+- Use `Write` tool to create validation utilities and test files
+- Use `Read` tool to compare outputs
+- Use `Edit` or `MultiEdit` tools for implementation changes
+- Use npm scripts from package.json when available
+- Only use Bash for running tests and npm commands
+
 ## Workspace
 Create `workspace/07-parity-validation/` for:
 - `utils/embedding-parity.js` implementation
