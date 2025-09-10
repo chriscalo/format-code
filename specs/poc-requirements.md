@@ -23,14 +23,22 @@
 ## Test Requirements
 
 **THE ONLY ACCEPTABLE TEST**: Tests MUST assert that the formatter's output exactly matches `expected.[ext]`
-- ✅ Read `input.[ext]` → Format it → Assert output === `expected.[ext]`  
+- ✅ Read `input.[ext]` → Format it → Write to `output.[ext]` → Read back → Assert matches `expected.[ext]`  
 - ❌ No partial validation, no "close enough", no manual inspection
 - ❌ No other test types unless explicitly documenting failures
 
 ```javascript
 // This is the ONLY acceptable test pattern:
+const input = fs.readFileSync(inputFile, 'utf-8');
+const expected = fs.readFileSync(expectedFile, 'utf-8');
+
+// Run formatter and write output to file
 const output = await runFormatter(input);
-assert.strictEqual(output, expected, 'Output must match expected.[ext] exactly');
+fs.writeFileSync(outputFile, output);
+
+// Read the output file back and compare
+const actualOutput = fs.readFileSync(outputFile, 'utf-8');
+assert.strictEqual(actualOutput, expected, 'Output must match expected.[ext] exactly');
 ```
 
 ## Success Criteria
