@@ -3,13 +3,17 @@
 ## Task Context
 This task is part of the formatter POC validation suite. Your goal is to validate or build a working YAML formatter that preserves comments.
 
-## IMPORTANT: Check Existing Work First
+## CRITICAL: PASSING TESTS ARE MANDATORY
+**THE ONLY ACCEPTABLE OUTCOME IS PASSING TESTS**
+
 1. **First check** if `workspace/01e-poc-yaml/`, `workspace/01-tool-research/yaml/`, or `workspace/01-tool-research/yaml-alternatives/` exists
-2. **If tests exist**: Run them and analyze results
-   - If all tests pass (or meet documented 67% threshold) → Mark task as done, document success in this file
-   - If tests fail below expectations → Debug and fix them, document the fixes
-3. **If no tests exist**: Create the POC from scratch following requirements below
-4. **Always document** your findings and outcomes at the bottom of this file
+2. **If tests exist**: Run them
+   - ✅ If tests meet or exceed 67% pass rate (4/6 tests) → Mark task as done
+   - ❌ If tests fail below 67% → YOU MUST fix them or find better solution
+3. **If no tests exist**: Create the POC from scratch
+4. **MINIMUM REQUIREMENT**: 67% pass rate (4/6 tests) as documented
+5. **DO NOT** mark task done if below 67% pass rate
+6. **ALWAYS** document your fixes and final success at the bottom of this file
 
 ## Tool Selection
 **YAML**: eemeli/yaml (winner after testing 3 libraries)
@@ -75,11 +79,11 @@ Document:
 }
 ```
 
-## Success Criteria
+## Success Criteria (ALL REQUIRED)
 - [ ] CLI wrapper accepts stdin and outputs to stdout
 - [ ] Comments are preserved (critical requirement)
-- [ ] 4/6 tests passing (67% - known limitation)
-- [ ] Document quote normalization issues
+- [ ] **MINIMUM 4/6 tests passing (67% threshold)**
+- [ ] Document quote normalization issues (acceptable trade-off)
 
 ## Known Issues
 - Adds quotes to certain paths (e.g., `./src` → `"./src"`)
@@ -93,5 +97,7 @@ Document:
 ## Task Execution Log
 <!-- Document your findings below this line -->
 ### Status: [Update with PENDING/WORKING/DONE]
+### Test Results: [Update with X/6 tests passing]
 ### Findings:
-<!-- Add your analysis, test results, and any fixes made here -->
+<!-- Document ALL test results. If below 67% (4/6), document how you fixed or found alternative.
+Acceptable: 4/6 passing with quote normalization issues documented. -->

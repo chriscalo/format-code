@@ -3,13 +3,17 @@
 ## Task Context
 This task is part of the formatter POC validation suite. Your goal is to validate or build a working Python formatter.
 
-## IMPORTANT: Check Existing Work First
+## CRITICAL: PASSING TESTS ARE MANDATORY
+**THE ONLY ACCEPTABLE OUTCOME IS ALL TESTS PASSING**
+
 1. **First check** if `workspace/01g-poc-python/` or `workspace/01-tool-research/py/` exists
-2. **If tests exist**: Run them and analyze results
-   - If all tests pass → Mark task as done, document success in this file
-   - If tests fail → Debug and fix them, document the fixes
-3. **If no tests exist**: Create the POC from scratch following requirements below
-4. **Always document** your findings and outcomes at the bottom of this file
+2. **If tests exist**: Run them
+   - ✅ If ALL tests pass → Mark task as done, document success
+   - ❌ If ANY test fails → YOU MUST fix them until ALL pass
+3. **If no tests exist**: Create the POC from scratch
+4. **DO NOT** mark task as done with failing tests
+5. **DO NOT** document "known limitations" as an excuse for failures
+6. **ALWAYS** document your fixes and final success at the bottom of this file
 
 ## Tool Selection
 **Python**: ruff (recommended)
@@ -74,11 +78,11 @@ indent-style = "space"
 quote-style = "double"
 ```
 
-## Success Criteria
+## Success Criteria (ALL REQUIRED)
 - [ ] Node.js wrapper spawns Python subprocess correctly
-- [ ] All tests pass (or document known limitations)
-- [ ] Style guide compliance demonstrated
-- [ ] Real formatting example working
+- [ ] **ALL tests pass - NO EXCEPTIONS**
+- [ ] Style guide compliance fully demonstrated
+- [ ] Real formatting example working correctly
 
 ## Notes
 - No plugin system (limitation)
@@ -92,5 +96,7 @@ quote-style = "double"
 ## Task Execution Log
 <!-- Document your findings below this line -->
 ### Status: [Update with PENDING/WORKING/DONE]
+### Test Results: [Update with PASS/FAIL count]
 ### Findings:
-<!-- Add your analysis, test results, and any fixes made here -->
+<!-- Document ALL test results. If any failed, document how you fixed them.
+DO NOT leave this task until ALL tests pass. -->
