@@ -2,7 +2,11 @@
 
 Test whether each formatter can meet the stdio goals identified in the research phase.
 
-**IMPORTANT**: Before starting, read [project-context.md](../project-context.md) for tool selections and constraints from task 01-tool-research.
+**Links you need:**
+- [Project context with validated tools](../project-context.md) - Check tool selections from task 01
+- [Previous task results](../../workspace/01-tool-research/) - Reference example implementations
+
+**Your workspace:** `workspace/02-stdio-validation/`
 
 ## Workspace
 Create `workspace/02-stdio-validation/` for:

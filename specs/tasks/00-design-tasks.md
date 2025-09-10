@@ -5,26 +5,34 @@ This directory contains autonomous design validation tasks for the Code Formatti
 
 **CRITICAL: Document everything as you go.** Add your findings directly to the task file you're working on. Save any authored source code (config files, plugins, test scripts) as code blocks in the task file for reuse later. The point is not just to validate that things work, but to create a comprehensive record of findings and implementation decisions.
 
-## For Agents
+## Architecture: Orchestrator + Task Agents
 
-**AUTONOMOUS EXECUTION REQUIRED**: When an agent is pointed to this file, they should immediately begin autonomous execution by claiming and working on the next available task. Do not ask for permission or clarification.
+### For Orchestrator Agents
+**Your context**: This file (specs/tasks/00-design-tasks.md)
 
-**IMPORTANT CONSTRAINTS**: Before making any tool recommendations, agents MUST:
-1. **Check project preferences** - Review STYLE_GUIDE.md and project-context.md for tool restrictions
-2. **Understand actual requirements** - Don't assume language-specific tools are needed if general tools can meet the requirement  
-3. **Respect ecosystem preferences** - Prefer npm/JavaScript ecosystem unless requirements cannot be met
-4. **Never recommend Prettier** - This tool is explicitly forbidden for this project
+**Your role**: 
+- Monitor task status in the YAML below
+- Spawn task agents with focused context when tasks become `ready`
+- Update task status as work completes
+- Handle failures and dependency promotion
 
-**To claim and work on the next available task:**
+**Work loop**:
+1. Check for `ready` tasks below
+2. For each ready task: `spawnAgent('general-purpose', 'Execute task [ID]. Your context: specs/tasks/[ID].md')`
+3. Monitor for completed tasks and update status
+4. Promote waiting tasks when dependencies complete
 
-1. **Find next available task** with status `ready` below
-2. **Atomic claim**: Change status from `ready` to `working` in single edit
-3. **Create workspace**: Make directory `workspace/[task-id]/` for any files you create
-4. **Do the work**: Read the task file and complete all requirements  
-5. **Validate completion**: Verify all success criteria met before marking done
-6. **Mark complete**: Update status to `done` only after validation
+### For Task Execution Agents
+**Your context**: You'll be given a single task file (e.g., `specs/tasks/02-stdio-validation.md`)
 
-Tasks must be completed in dependency order. Multiple agents can work simultaneously on tasks that don't depend on each other.
+**Your role**: 
+1. Read your task file and follow any links it contains
+2. Execute all requirements in the task file
+3. Work in `workspace/[your-task-id]/` 
+4. Document findings in your task file as you go
+5. Update task status: `ready` → `working` → `done` in this file
+
+**Important**: Task agents only get their specific task file + links. No additional context.
 
 ---
 
