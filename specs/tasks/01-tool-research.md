@@ -4,11 +4,18 @@ Which tools actually do what we need before we bother installing them?
 
 ## Research Methodology
 
+**Iterative Research + POC Process:**
 1. Check official documentation for configuration options and plugin support
 2. Look for stdin/stdout examples in docs or GitHub issues
 3. Verify macOS compatibility and installation methods
 4. Check maintenance status (recent commits, active issues)
 5. Look for plugin ecosystems and extensibility examples
+6. **Build working POC with tests** - this validates the research
+7. **If POC fails or has limitations**: Research alternatives and repeat
+
+**Current Status:**
+- **HTML, JS, CSS, Markdown, JSON, Python**: Research done, POCs needed to validate
+- **YAML**: Research done, POC built but failed (comment limitation) → **Need Phase 2 research for alternatives**
 
 ## For each tool, verify:
 
@@ -19,8 +26,14 @@ Which tools actually do what we need before we bother installing them?
 
 **Installation**: `npm install rehype rehype-format rehype-parse rehype-stringify unified`
 **stdin/stdout**: Full support via unified processor with concat-stream pattern
-**Configuration**: `{blanks: ['head', 'body'], indent: '\t'}` for custom spacing and indentation
+**Configuration**: `{blanks: ['head', 'body'], indent: '  '}` for custom spacing and indentation
 **Plugin Development**: Well-documented AST manipulation, security considerations with allowDangerousHtml option
+
+**POC REQUIRED**: Create `workspace/01-tool-research/html/` with:
+- `format-html.js` - CLI wrapper using rehype programmatically  
+- `format-html.test.js` - Test suite validating XHTML self-closing, attribute quoting, 80-char width
+- `input.html` - Messy HTML sample with unquoted attributes, non-self-closing tags
+- `expected.html` - Clean HTML following style guide (quoted attributes, self-closing tags)
 **Maintenance**: Active project under unified collective, regular updates
 
 ### JavaScript: ESLint + js-beautify
@@ -32,6 +45,12 @@ Which tools actually do what we need before we bother installing them?
 **stdin/stdout**: Native ESLint support with `--stdin --fix-dry-run --format json` for programmatic access
 **Configuration**: ESLint config files (eslint.config.js/mjs/cjs), js-beautify options via plugin config
 **Custom Rules**: Well-documented context API with sourceCode, physicalFilename, options access
+
+**POC REQUIRED**: Create `workspace/01-tool-research/js/` with:
+- `format-js.js` - CLI wrapper using ESLint programmatically with formatting rules
+- `format-js.test.js` - Test suite validating semicolons, double quotes, trailing commas, 80-char width  
+- `input.js` - Messy JavaScript sample with single quotes, missing semicolons, bad indentation
+- `expected.js` - Clean JavaScript following style guide (double quotes, semicolons, trailing commas)
 **Maintenance**: ESLint actively maintained, js-beautify integration available but ESLint deprecated formatting rules in 2023
 
 ### CSS/SCSS: Stylelint
@@ -43,6 +62,12 @@ Which tools actually do what we need before we bother installing them?
 **stdin/stdout**: Native `--stdin` support, resolved stdin CLI issues in recent versions
 **Configuration**: stylelint.config.mjs with extends, overrides for different file patterns
 **Plugin Development**: Namespaced rules (plugin/my-rule), meta.fixable for autofix support, PostCSS plugin architecture
+
+**POC REQUIRED**: Create `workspace/01-tool-research/css/` with:
+- `format-css.js` - CLI wrapper using stylelint programmatically with --fix
+- `format-css.test.js` - Test suite validating double quotes, property ordering, 80-char width
+- `input.css` - Messy CSS sample with single quotes, disordered properties, bad indentation
+- `expected.css` - Clean CSS following style guide (double quotes, property ordering by type)
 **Maintenance**: Active project, v16.0.0+ removed deprecated rules, supports Node.js 18.12.0+
 
 ### Markdown: remark/remark-stringify
@@ -54,6 +79,12 @@ Which tools actually do what we need before we bother installing them?
 **stdin/stdout**: Full support via unified-stream with process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 **Configuration**: bullet ('*','+','-'), emphasis ('*','_'), fence ('`','~'), fences (boolean), closeAtx (boolean)
 **Plugin Development**: AST-based transformation, TypeScript support, Settings registration with unified
+
+**POC REQUIRED**: Create `workspace/01-tool-research/md/` with:
+- `format-md.js` - CLI wrapper using remark programmatically with unified processor
+- `format-md.test.js` - Test suite validating bullet style, fence chars, emphasis markers, 80-char width
+- `input.md` - Messy Markdown sample with mixed bullet styles, inconsistent fencing, bad line wrapping  
+- `expected.md` - Clean Markdown following style guide (consistent bullet/emphasis, proper line breaks)
 **Maintenance**: Active unified collective project, compatible with maintained Node.js versions
 
 ### YAML: js-yaml (LIMITATION DISCOVERED)
@@ -68,7 +99,22 @@ Which tools actually do what we need before we bother installing them?
 **Test Status**: 2/5 tests passing - comment preservation tests fail
 **Alternative Options**: YAWN-YAML, enhanced-yaml exist but not evaluated
 
-**DECISION**: js-yaml has fundamental comment preservation limitation. **REQUIRES NEW RESEARCH TASK** for comment-preserving YAML formatters.
+**DECISION**: js-yaml has fundamental comment preservation limitation. **REQUIRES FOLLOW-UP RESEARCH**:
+
+**YAML Research Phase 2** (to be executed):
+1. **Research comment-preserving YAML formatters**:
+   - YAWN-YAML: AST-based YAML formatter with comment preservation
+   - enhanced-yaml: Comment-preserving YAML library  
+   - yaml-diff-patch: YAML manipulation with comment support
+   - ruamel.yaml: Python library (requires Python integration)
+
+2. **Implement POCs for promising alternatives**:
+   - Build CLI wrappers for each viable option
+   - Test comment preservation capabilities
+   - Validate style guide compliance (minimal quoting, 80-char width)
+   - Create test suites comparing with expected.yaml
+
+3. **Document final recommendation** with working POC
 
 ### JSON/JSONC: ESLint + @eslint/json (2024 official)
 - [x] ESLint + @eslint/json works via stdin/stdout? **YES** - native ESLint `--stdin` flag, `--stdin-filename` support
@@ -79,6 +125,12 @@ Which tools actually do what we need before we bother installing them?
 **stdin/stdout**: Native ESLint stdin support with `--stdin --stdin-filename`
 **Configuration**: Flat config with language: "json/jsonc", allowTrailingCommas option, rule configs
 **Custom Rules**: ESLint custom rules API, eslint-disable directives supported in JSONC/JSON5
+
+**POC REQUIRED**: Create `workspace/01-tool-research/json/` with:
+- `format-json.js` - CLI wrapper using ESLint + @eslint/json programmatically
+- `format-json.test.js` - Test suite validating key order preservation, JSONC comments, consistent spacing
+- `input.json` - Messy JSON sample with inconsistent spacing, unordered keys
+- `expected.json` - Clean JSON following style guide (preserve key order, consistent formatting)
 **Maintenance**: Official ESLint plugin (2024), or mature eslint-plugin-jsonc with 4+ years development
 
 **Note**: Two options - official @eslint/json (newer, cleaner) or eslint-plugin-jsonc (more features, established)
@@ -93,6 +145,12 @@ Which tools actually do what we need before we bother installing them?
 **Configuration**: pyproject.toml [tool.ruff], [tool.ruff.format] sections, extensive options
 **Custom Rules**: ruff limitation - no external plugins, only internal rules; 800+ built-in rules though
 **Maintenance**: ruff extremely active (Rust-based, 30x faster than Black), black stable and mature
+
+**POC REQUIRED**: Create `workspace/01-tool-research/py/` with:
+- `format-py.js` - Node.js CLI wrapper spawning ruff subprocess with --stdin-filename
+- `format-py.test.js` - Test suite validating double quotes, line length 80, proper indentation
+- `input.py` - Messy Python sample with single quotes, long lines, bad indentation
+- `expected.py` - Clean Python following style guide (double quotes, 80-char lines, PEP 8)
 
 **Note**: ruff recommended for performance and comprehensive rule set, but no custom plugin extensibility
 **Alternative**: Keep black as fallback if extensibility becomes critical requirement
@@ -182,3 +240,31 @@ Which tools actually do what we need before we bother installing them?
   - Alternative tools considered if primary choice fails
 - **Create tool selection report** with go/no-go decisions and rationale ✅
 - **Document gaps** that will require custom plugin development ✅
+
+## EXECUTION PLAN
+
+### Phase 1: YAML Research Completion
+**Priority**: CRITICAL - YAML formatter has fundamental limitation
+**Action**: Execute YAML Research Phase 2 (defined above):
+1. Research YAWN-YAML, enhanced-yaml, yaml-diff-patch for comment preservation
+2. Implement working POC with comment-preserving formatter
+3. Validate against expected.yaml with comments intact
+
+### Phase 2: Complete All Language POCs 
+**Priority**: HIGH - Need working proof for every language
+**Action**: Create POCs for all remaining languages:
+- `html/` - rehype with attribute quoting, self-closing tags
+- `js/` - ESLint with semicolons, double quotes, trailing commas  
+- `css/` - Stylelint with double quotes, property ordering
+- `md/` - remark with consistent bullets, fencing, emphasis
+- `json/` - ESLint + @eslint/json with key order preservation
+- `py/` - ruff wrapper with double quotes, 80-char width
+
+### Phase 3: Validation
+**Action**: Run all POC tests to ensure:
+- ✅ All tests passing for each language (except documented limitations)
+- ✅ Style guide compliance verified
+- ✅ stdin/stdout operation confirmed
+- ✅ Real formatting examples working
+
+**BLOCKER**: Task cannot be marked complete until ALL POCs are working with tests.

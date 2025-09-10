@@ -58,8 +58,9 @@ The point is not just to validate that things work theoretically, but to create 
 
 ```yaml
 01-tool-research:
-  status: done
+  status: ready
   dependencies: []
+  note: "Research complete, POCs needed - YAML alternatives + all other languages"
 
 02-stdio-validation:
   status: ready
