@@ -8,31 +8,35 @@ This directory contains autonomous design validation tasks for the Code Formatti
 ## Architecture: Orchestrator + Task Agents
 
 ### For Orchestrator Agents
-**Your context**: This file (specs/tasks/00-design-tasks.md)
+**Your context**: This file (specs/tasks/00-design-tasks.md) - that's it!
 
-**Your role**: 
-- Monitor task status in the YAML below
-- Spawn task agents with focused context when tasks become `ready`
-- Update task status as work completes
-- Handle failures and dependency promotion
+**Your role**: Like a project manager - monitor progress and make course corrections, NOT execute tasks.
 
 **Work loop**:
-1. Check for `ready` tasks below
-2. For each ready task: `spawnAgent('general-purpose', 'Execute task [ID]. Your context: specs/tasks/[ID].md')`
-3. Monitor for completed tasks and update status
-4. Promote waiting tasks when dependencies complete
+1. Check task status in YAML below
+2. For `ready` tasks: `spawnAgent('general-purpose', 'Execute task [ID]. Your context: specs/tasks/[ID].md')`
+3. When agents report completion: Update status and promote waiting tasks
+4. **Course corrections**: If agents ask questions or need guidance, provide minimal focused answers
+5. **Stay high-level**: Don't get pulled into task details - that's the agent's job
+
+**Key principle**: You coordinate, agents execute. You should never need to read task details unless making a course correction.
 
 ### For Task Execution Agents
 **Your context**: You'll be given a single task file (e.g., `specs/tasks/02-stdio-validation.md`)
 
 **Your role**: 
 1. Read your task file and follow any links it contains
-2. Execute all requirements in the task file
+2. Execute all requirements autonomously 
 3. Work in `workspace/[your-task-id]/` 
 4. Document findings in your task file as you go
-5. Update task status: `ready` → `working` → `done` in this file
+5. Update task status: `ready` → `working` → `done` in specs/tasks/00-design-tasks.md
+6. **Only contact orchestrator if truly stuck** - most questions should be answerable from your task file links
 
-**Important**: Task agents only get their specific task file + links. No additional context.
+**Communication protocol**: 
+- ✅ **Report completion**: "Task [ID] complete, status updated to done"
+- ✅ **Report blocking issues**: "Task [ID] blocked: [brief issue], need guidance on [specific question]"  
+- ❌ **Don't dump context**: Don't send detailed findings, logs, or implementation details to orchestrator
+- ❌ **Don't ask permission**: Make decisions based on your task file and links
 
 ---
 
