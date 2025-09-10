@@ -377,7 +377,6 @@ const obj={name:'test',items:[1,2,3,]};console.log(obj);
 - [ ] **Create embedding parity test results** with before/after examples
 - [ ] **Document any workarounds** needed for content preservation
 
-<!-- DOCUMENTATION PROGRESS CURSOR -->
 
 ### 6. **Advanced HTML Features**
 Can we handle inherited indentation and combined line lengths in HTML?
@@ -453,7 +452,6 @@ items: [1,2,3]
   - [ ] Document any parity violations and their causes
 - [ ] **Create markdown embedding test results** with all language examples
 
-<!-- REVIEW PROGRESS CURSOR -->
 
 ### 8. **Advanced Markdown Features** 
 Can we handle inherited indentation and combined line lengths in Markdown?
