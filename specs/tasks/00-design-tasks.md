@@ -38,6 +38,16 @@ The point is not just to validate that things work theoretically, but to create 
 ### For Task Execution Agents
 **Your context**: You'll be given a single task file (e.g., `specs/tasks/02-stdio-validation.md`)
 
+**Tool Usage Guidelines** (IMPORTANT for YOLO mode):
+- **Prefer native tools over bash commands** to minimize approval prompts:
+  - Use `Read` instead of `cat`, `head`, `tail`
+  - Use `Write` instead of `echo > file` or `cat > file`
+  - Use `Edit` instead of `sed`, `awk`, or other text manipulation
+  - Use `Glob` instead of `find` or `ls` with patterns
+  - Use `Grep` instead of `grep`, `rg`, or `ack`
+- **For running formatters**: Use npm tasks when available (check package.json scripts)
+- **Only use Bash for**: Running formatters, npm commands, git operations, or system tools
+
 **Your role**: 
 1. Read your task file and follow any links it contains
 2. Execute all requirements autonomously 
@@ -57,14 +67,52 @@ The point is not just to validate that things work theoretically, but to create 
 ## All Tasks
 
 ```yaml
+# Research Phase
 01-tool-research:
-  status: ready
+  status: done
   dependencies: []
-  note: "Research complete, POCs needed - YAML alternatives + all other languages"
+  note: "Research complete, tool selection finalized"
 
-02-stdio-validation:
+# POC Implementation Phase
+01a-poc-html:
   status: ready
   dependencies: [01-tool-research]
+  note: "HTML formatter POC (rehype/rehype-format)"
+
+01b-poc-javascript:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "JavaScript formatter POC (ESLint + js-beautify)"
+
+01c-poc-css:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "CSS/SCSS formatter POC (Stylelint)"
+
+01d-poc-markdown:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "Markdown formatter POC (remark/remark-stringify)"
+
+01e-poc-yaml:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "YAML formatter POC (eemeli/yaml)"
+
+01f-poc-json:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "JSON/JSONC formatter POC (ESLint + @eslint/json)"
+
+01g-poc-python:
+  status: ready
+  dependencies: [01-tool-research]
+  note: "Python formatter POC (ruff)"
+
+# Validation & Integration Phase
+02-stdio-validation:
+  status: waiting
+  dependencies: [01a-poc-html, 01b-poc-javascript, 01c-poc-css, 01d-poc-markdown, 01e-poc-yaml, 01f-poc-json, 01g-poc-python]
 
 03-basic-orchestrator:
   status: waiting
