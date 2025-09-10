@@ -11,13 +11,13 @@ Start with the most basic pieces and build up confidence that the design approac
 
 ### 1. **Basic Tool Execution**
 Can we actually run each tool for every target language?
+- **HTML**: Install and test rehype, rehype-format
 - **JavaScript**: Install and test ESLint, js-beautify
-- **Python**: Install and test ruff, black
 - **CSS/SCSS**: Install and test Stylelint
+- **Markdown**: Install and test remark, remark-stringify
 - **YAML**: Install and test yamlfmt
 - **JSON/JSONC**: Install and test ESLint with jsonc-eslint-parser
-- **HTML**: Install and test rehype, rehype-format
-- **Markdown**: Install and test remark, remark-stringify
+- **Python**: Install and test ruff, black
 - Get each tool to format a simple example via stdin/stdout
 - Verify they exit cleanly and produce expected output
 
