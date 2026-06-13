@@ -1,0 +1,11 @@
+{
+  "name": "poc-oxlint-js",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test poc.test.js"
+  },
+  "dependencies": {
+    "oxlint": "^1.64.0"
+  }
+}
