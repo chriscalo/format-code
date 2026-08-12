@@ -10,7 +10,7 @@ const yamlOptions = {
   sortKeys: false, // Preserve original key order
   flowLevel: -1, // Always use block style
   skipInvalid: false,
-  quotingType: "'" // Minimal quoting per style guide
+  quotingType: '"' // Use double quotes per style guide
 };
 
 // Read from stdin

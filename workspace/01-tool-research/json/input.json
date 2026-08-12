@@ -1,0 +1,1 @@
+{"name":"John Doe","age":30,"city":"New York","hobbies":["reading","swimming","coding"],"address":{"street":"123 Main St","zipcode":"10001","country":"USA"},"active":true,"balance":1234.56,"metadata":null,"tags":[],"preferences":{"theme":"dark","notifications":{"email":true,"sms":false,"push":true}}}

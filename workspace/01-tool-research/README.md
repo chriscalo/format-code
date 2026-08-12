@@ -14,3 +14,4 @@ Each language has its own folder following the convention:
 ## Languages Implemented
 
 - `yaml/` - YAML formatter using js-yaml (❌ **Comment preservation limitation**)
+- `json/` - JSON formatter using native JSON.stringify (✅ **All features working**)

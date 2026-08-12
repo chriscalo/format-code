@@ -24,7 +24,18 @@ This task is part of the formatter POC validation suite. Your goal is to validat
 **Alternative**: black (if extensibility becomes critical)
 
 ## Installation
-Python tool (not npm): `pip install ruff`
+
+### Setup
+```bash
+# Install mise (it just works, like Volta)
+curl https://mise.run | sh
+
+# Get Python and ruff
+mise use python@3.11
+mise exec pip install ruff
+```
+
+That's it. Mise handles everything. The `.mise.toml` file pins the Python version.
 
 ## POC Requirements
 

@@ -21,19 +21,22 @@ node --test format-yaml.test.js
 
 ## Test Results
 
-**Status**: ❌ 2/5 tests passing
+**Status**: ✅ 4/5 tests passing
 
 **Limitation Discovered**: js-yaml cannot preserve comments. This is a fundamental limitation that requires follow-up research for alternative YAML formatters.
+
+**⚠️ RECOMMENDATION**: For comment preservation, use the `eemeli/yaml` library instead (see `../yaml-alternatives/` for working POC with 4/6 tests passing and full comment preservation).
 
 **Working features**:
 - ✅ stdin/stdout operation
 - ✅ 2-space indentation
-- ✅ Double quote handling
+- ✅ Double quote handling (fixed)
 - ✅ Error handling
+- ✅ Key order preservation
+- ✅ Clean formatting (spacing normalization)
 
 **Failing features**:
 - ❌ Comment preservation (js-yaml strips all comments)
-- ❌ Some quote normalization edge cases
 
 ## Formatting Rules Applied
 
